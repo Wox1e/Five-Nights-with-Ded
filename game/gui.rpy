@@ -26,7 +26,7 @@ define config.check_conflicting_properties = True
 ## Цвета текста в интерфейсе.
 
 ## Акцентный цвет используется в заголовках и подчёркнутых текстах.
-define gui.accent_color = '#336600'
+define gui.accent_color = '#666600'
 
 ## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
 define gui.idle_color = '#707070'
@@ -59,16 +59,16 @@ define gui.interface_text_color = '#404040'
 ## Шрифты и их размеры #########################################################
 
 ## Шрифт, используемый внутриигровым текстом.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "PROPAGAN.ttf"
 
 ## Шрифт, используемый именами персонажей.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "ST-Nizhegorodsky.otf"
 
 ## Шрифт, используемый текстом вне игры.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "Imperial Web.ttf"
 
 ## Размер нормального текста диалога.
-define gui.text_size = 33
+define gui.text_size = 20
 
 ## Размер имён персонажей.
 define gui.name_text_size = 45
