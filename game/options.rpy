@@ -63,8 +63,8 @@ define config.sample_voice = "гойда.ogg"
 ## проигрываться в главном меню. Этот файл продолжит проигрываться во время
 ## игры, если не будет остановлен, или не начнёт проигрываться другой аудиофайл.
 
-# define config.main_menu_music = "каникулы на марсе - дедушка.ogg"
-# default preferences.volume.music = 0.15
+define config.main_menu_music = "темная ночь.ogg"
+default preferences.volume.music = 0.15
 
 ## Переходы ####################################################################
 ##
