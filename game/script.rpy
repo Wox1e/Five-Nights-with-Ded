@@ -1,8 +1,8 @@
 ﻿
 
 # Определение персонажей игры.
-define ded = Character('Дед Захар', color="#c8ffc8")
-define gg = Character("Матвей", color="#c8ffc8")
+define ded = Character('Дед Захар', color="#00b9d2")
+define gg = Character("Матвей", color="#0526ab")
 
 image bg bus_window_factory = "bus_window_factory.png"
 image bg bus_window_village = "bus_window_village.png"
@@ -17,12 +17,14 @@ image bg black_bg = "black_bg.png"
 
 # Игра начинается здесь:
 label start:
-
+    stop music
+    play sound "bus_long.ogg"
     scene bus_window_factory 
-
     "В окне показались трубы заводов - угрюмая, привычная реальность подоплёкой несостоявшейся молодежи и сотен коммерсантов"
 
     gg "за час уже добрался до промзоны - совсем скоро я наконец покину Казань - город, в котором я пытался начать лучшую жизнь …"
+
+    play sound "bus.ogg"
 
     scene bus_inside
 
@@ -33,7 +35,6 @@ label start:
     scene black_bg
 
     ## Звук удара еблом
-
 
     gg "Ай! Какого…"
 

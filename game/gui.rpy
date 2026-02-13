@@ -26,7 +26,7 @@ define config.check_conflicting_properties = True
 ## Цвета текста в интерфейсе.
 
 ## Акцентный цвет используется в заголовках и подчёркнутых текстах.
-define gui.accent_color = '#336600'
+define gui.accent_color = '#64baaa'
 
 ## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
 define gui.idle_color = '#707070'
@@ -36,7 +36,7 @@ define gui.idle_color = '#707070'
 define gui.idle_small_color = '#606060'
 
 ## Цвет, используемых в кнопках и панелях, когда они наведены.
-define gui.hover_color = '#336600'
+define gui.hover_color = '#64baaa'
 
 ## Цвет, используемый текстовой кнопкой, когда она выбрана, но не наведена.
 ## Кнопка может быть выбрана, если это текущий экран или текущее значение
@@ -59,16 +59,16 @@ define gui.interface_text_color = '#404040'
 ## Шрифты и их размеры #########################################################
 
 ## Шрифт, используемый внутриигровым текстом.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "PROPAGAN.ttf"
 
 ## Шрифт, используемый именами персонажей.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "ST-Nizhegorodsky.otf"
 
 ## Шрифт, используемый текстом вне игры.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "Imperial Web.ttf"
 
 ## Размер нормального текста диалога.
-define gui.text_size = 33
+define gui.text_size = 20
 
 ## Размер имён персонажей.
 define gui.name_text_size = 45
@@ -98,7 +98,7 @@ define gui.game_menu_background = "gui/game_menu.png"
 ## Эти переменные контролируют, как диалог появляется на отдельной строчке.
 
 ## Высота текстового окна, содержащего диалог.
-define gui.textbox_height = 278
+define gui.textbox_height = 300
 
 ## Местоположение текстового окна по вертикали экрана. 0.0 — верх, 0.5 — центр и
 ## 1.0 — низ.
@@ -109,7 +109,7 @@ define gui.textbox_yalign = 1.0
 ## Это могут быть целые значения в пикселях слева и сверху от начала окна или
 ## процентное отношение, например, 0.5 для центрирования.
 define gui.name_xpos = 360
-define gui.name_ypos = 0
+define gui.name_ypos = 20
 
 ## Горизонтальное выравнивание имени персонажа. Это может быть 0.0 для
 ## левоориентированного, 0.5 для центрированного и 1.0 для правоориентированного
