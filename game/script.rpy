@@ -5,31 +5,31 @@ define ded = Character('Дед Захар', color="#00b9d2")
 define gg = Character("Матвей", color="#0526ab")
 define fm = Character("Рыбак", color="#0526ab")
 
-image bg bus_window_factory = "bus_window_factory.png"
-image bg bus_window_village = "bus_window_village.png"
-image bg bus_inside = "bus_inside.png"
-image bg bus_stop = "bus_stop.png"
-image bg black_bg = "black_bg.png"
-image bg forest_trail = "forest_trail.png"
-image bg lake = "lake.png"
-image bg lake_fire = "lake_fire.png"
-image bg school = "school.png"
-image bg fishing_camp = "fishing_camp.png"
-image bg farm = "farm.png"
+image bus_window_factory = "bus_window_factory.png"
+image bus_window_village = "bus_window_village.png"
+image bus_inside = "bus_inside.png"
+image bus_stop = "bus_stop.png"
+image black_bg = "black_bg.png"
+image forest_trail = "forest_trail.png"
+
+image lake = "lake.png"
+image lake_fire = "lake_fire.png"
+image school = "school.png"
+image fishing_camp = "fishing_camp.png"
+image farm = "farm.png"
 image playground = "playground.png"
-
-
-image ded stay = "ded.png"
-image gg stay = "gg.png"
-
-image house front = "house_front.png"
-image house livingroom = "house_living_room.png"
-image house medal box = "house_medal_box.png"
+image house_livingroom = "house_living_room.png"
 
 image wood chopping = "minigames/image.png"
 
-transform stretch_to_screen:
-    size (1920, 1080) # Точный размер
+image house_outside = "house_outside.png"
+image garden = "garden.png"
+image behind_house = "behind_house.png"
+
+image house_medal_box = "house_medal_box.png"
+
+image gg stay = "gg.png"
+
 
 
 # Игра начинается здесь:
@@ -39,7 +39,6 @@ label start:
     scene bus_window_factory 
     "В окне показались трубы заводов - угрюмая, привычная реальность подоплёкой несостоявшейся молодежи и сотен коммерсантов"
     
-
     show gg stay
 
     gg "за час уже добрался до промзоны - совсем скоро я наконец покину Казань - город, в котором я пытался начать лучшую жизнь …"
@@ -178,7 +177,7 @@ label fishing:
     "Дорога к местной речке ничем не выделялась, в отличие от нее самой."
     "Сама по себе река не была сильно широкой, однако тянулась через всю длину деревни и уходила вдаль. Здесь излюбленная рыбацкая зона."
     "Чуть левее сидел рыбак, судя по надутой сумке - явно не местный."
-    show gg stay at left
+    show gg stay
     gg "Здаров, мужик. Есть клёв?"
     show fm at right
     fm "В последнее время людей все меньше и меньше"
@@ -188,68 +187,85 @@ label fishing:
     fm "Да как у всех других думаю, молодняк весь разъехался кто куда."
     fm "Старики-мразматики  про бесовщину всякую говорят. Чёрт его знает что там у них, сам проверь если хочешь."
     gg "Понятно что ничего непонятно. Бывай, мужик."
-    hide gg
-    hide fm    
+    hide gg stay
+    hide fm
     jump choise1_loop
 label farm:
     scene farm
     "Чуть дальше входа в деревню виднелся местный колхоз, давно никем не пользуемый. Туда даже юноши не бегали хулиганить видимо, не было видно никаких тропок."
-    show gg
+    show gg stay
     gg "Ну нет, через заросли я не потопаю, да и вряд ли там что-то интересное будет."
     hide gg stay
     jump choise1_loop
 label playground:
     scene playground
+
     "Обычная детская площадка: турник, ржавая, еле крутящаяся карусель, да песочница с минимальным количеством песка."
     "В паре метров от основной площадки вход на корт"
-    "Впрочем от корта там 2 рукодельные воротины, затерявшиеся в высоченной траве,  да выцветший забор."
+    "Впрочем от корта там 2 рукодельные воротины, затерявшиеся в высоченной траве, да выцветший забор."
+
     show gg stay
+
     gg "Помнится мы с местными пацанами здесь часто собирались, турник…"
     gg "Раньше мы его использовали только чтоб ковры выбивать, а если я…"
-    
-    # гг подходит к турнику, запрыгивает и делает пару подтягиваний
-    gg "фух, мда, спорт явно не моё."
-    
-    # дальше не пишите, будем редачить
-    
-    # Походульки кончились, идём к деду
-    
-    scene house front
+
+    hide gg stay
+
+    "*подходит к турнику, запрыгивает и делает пару подтягиваний*"
+
     show gg stay
+
+    gg "фух, мда, спорт явно не моё."
+
+    scene house_outside
+
     gg "А вот и дом старика. Да, давно я тут не был"
     gg "Сирень, которую мы сажали с бабкой-то совсем выросла"
     gg "Приехал бы на месяц раньше, может застал как она цветёт"
     gg "Учитывая как она выросла, аромат стоял бы на всю округу и весь двор"
-    
+
     hide gg stay
+
     "Сам дом едва ли изменился за те 4 года"
     "Учитывая, что всё хозяйство держалось в руках Захара Ивановича - крепких, но уже ослабевающих, можно было простить и просевшие ворота, и местами облезлую краску на деревянном заборе"
     "Так или иначе дом выглядел гораздо лучше многих в этой деревне"
     "Только две вещи заметно бросались в глаза:"
     "После большого города он стал казаться приземистее и скромнеее что ли"
     "А ещё любимый бабушкин сад перед домом казался преступно заброшенным…"
-    
+
     show gg stay
+
     gg "Так, ладно. Дед должен быть дома, ну-ка"
     
     # гг делает 3 попытки постучать в дверь, никто не открывает
     gg "Вот старый же, куда запропастился только?"
     gg "Ладно, обойду дом, может чего полезного найду"
-    
+
+    hide gg stay
+    "входит в сад"
+    scene garden
+
+    "Первое впечатление о саде оказалось всё-таки немного ошибочным - он не был заброшен абсолютно"
+    "Да, он не был настолько прилежно ухожен как раньше, но было видно, как кто-то продолжал за ним ухаживать"
+    "Делал он это явно без чувства вкуса или какой-то самоотдачей, а скорее по инерции, но любовь, приложенная к делу всё-таки чувствовалась"
+
     show gg stay
-    gg "Первое впечатление о саде оказалось всё-таки немного ошибочным - он не был заброшен абсолютно"
-    gg "Да, он не был настолько прилежно ухожен как раньше, но было видно, как кто-то продолжал за ним ухаживать"
-    gg "Делал он это явно без чувства вкуса или какой-то самоотдачей, а скорее по инерции, но любовь, приложенная к делу всё-таки чувствовалась"
-    
+
     gg "После того как бабка померла, сад представляет собой лишь тень прошлой красоты"
     gg "Не то чтобы он раньше был прям произведением искусства"
     gg "Но сейчас тем более"
     gg "а вот тут я любил играть…"
     gg "когда-то давно дед с отцом наметили какую-то стройку или ремонт, закупили песка и высыпали прямо здесь"
     gg "таким образом я и получил эту импровизированную песочницу"
-    gg "как можно понять по оставшемуся песку - закончили они едва ли"
+
+    hide gg stay
+    "как можно понять по оставшемуся песку - закончили они едва ли"
+    show gg stay
+
     gg "Так, и где там все-таки дед?"
-    
+    scene behind_house
+    "*заходит за дом где огород*"
+
     hide gg stay
     "За домом открылся вид на большое поле принадлежавшее хозяину дома. Половина была не засажено, а просто напросто заросшее"
     "На лавке, около стен бани, сидел дед и что-то ножом вырезал из дерева"
@@ -258,14 +274,17 @@ label playground:
     show gg stay
     gg "Ну привет, дед."
     gg "Ты, смотрю, живой еще."
-    
     hide gg stay
+
     "и тут волна разочарования и непонимания прокатилась в Захаре Ивановиче"
     "что-то было не то в любимом внуке"
     "с первого взгляда на него были заметны изменения"
     "только деду было непонятно какие именно они были и чем вызваны"
-    
-    show ded stay at center:
+
+    hide gg stay
+    show gg stay at left
+
+    show ded at right:
         xsize 1280 
         ysize 720
 
@@ -287,6 +306,370 @@ label playground:
     
     show gg stay
     gg "ага, не забыл уж"
+
+    "Матвей заходит в дом"
+    hide gg stay
+    hide ded
+
+
+    scene house_livingroom
+
+    show gg stay
+    gg "Надо же, вроде и времени сколько прошло, а тут все так же. Начиная от каждой вещички, заканчивая звуком крутящегося счётчика на стене"
+    gg "даже отрывной календарь остался висеть тот же"
+    gg "мда…"
+    
+    hide gg stay
+    "действительно, комната казалась как будто законсервированной, в воздухе так и витало чувство ностальгии."
+    "тут и черно-белые картины молодых бабушки с дедушкой и отец в детстве, ковёр на стене, старенькая добротная кровать на стальной сетке"
+    gg "и непременный дедушкин кассетный радиоприемник"
+    
+    hide gg stay
+    "только весь интерьер казался немного более пыльным, чем прежде, но картину это ни капли не омрачало"
+    
+    show gg stay
+    gg "и какой же музыкой он себя развлекал тут?"
+    gg "интересно, он ещё вообще рабочий?"
+    # гг выключает радио
+    gg "что ж, недурно"
+    gg "у деда определенно есть музыкальный вкус"
+    gg "сорокалетней выдержки"
+    
+    gg "ладно, надо б уже располагаться в этой комнате"
+    gg "и желательно запрятать бы свою сумку подальше от старого"
+    gg "например под кровать"
+    
+    hide gg stay
+    "но при попытке спрятать что-то помешало багажу уместиться подальше под кроватью"
+    "это была небольшая коробочка с чем-то звенящим внутри"
+    
+    scene house_medal_box
+
+    gg "медали"
+    gg "точно, дед же во время войны служил где-то на флоте"
+    gg "а вообще странно, что он режил спрятать их здесь, в темноте и пыли подальше ото всех"
+    gg "особенно его гордость: медали “За отвагу” и “Оборону ленинграда”"
+    gg "были б у меня такие медали.."
+    
+    "дед заходит в комнату"
+    
+    scene house_livingroom
+    
+    show ded at left:
+        xsize 800
+        ysize 600
+    ded "музычку решил послушать?"
+    
+
+
+    "Захар Иванович незаметно прокрался в комнату, застав врасплох своего внука, так что Матвей даже чуть вздрогнул от неожиданности"
+    gg "блин, не вовремя он конечно"
+    gg "главное, чтоб он по моей реакции ничего не подумал и не начал задавать лишних вопросов"
+    
+    hide gg stay
+    "отодвинув коробку с медалями в сторону и как можно скорее запихнув сумку подальше, Матвей наконец вылез из-под кровать, стараясь не показывать своим видом лёгкий испуг, что испытал секундой ранее"
+    
+    show ded at left:
+        xsize 800
+        ysize 600
+    ded "Смотрю, ты быстро тут освоился. Пошли хоть чай попьешь, расскажешь как оно в городе-то"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+    gg "Ладно,  дают - бери."
+    
+    hide gg stay
+    "ну что, внучек, что тебя привело обратно к нам?"
+    
+    show gg stay
+    gg "Эээ,  да то тут то там, проблем по мелочи нахватал, вот отдохнуть решил."
+    
+    show ded at left:
+        xsize 800
+        ysize 600
+    ded "Ээх, всё и сразу никогда не получишь, не просто так ведь говорили тебе старики"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+    gg "Да чтоб ты ещё понимал ….. старый."
+    
+    show ded at left:
+        xsize 800
+        ysize 600
+    ded "Так, не ёрничай мне тут. А ну рассказывай, куда ввязался"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+    gg "Хватит допытываться, а то больше на бабку нашу походишь любопытством."
+    
+    hide gg stay
+    "после этих слов лицо Захара Ивановича утратило свою угрюмость, он слегка потупился, но потом невозмутимо продолжил"
+    
+    show ded at left:
+        xsize 800
+        ysize 600
+    ded "Ты с дороги устал наверно, а после долго пути нет ничего приятнее, чем сходить в хорошую баньку"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+    gg "Ох не нравится мне это"
+    
+    show ded at left:
+        xsize 800
+        ysize 600
+    ded "А её сперва нужно заслужить"
+    
+    # дед резко хмуреет, косо смотрит, встаёт из-за стола
+    show ded at left:
+        xsize 800
+        ysize 600
+    ded "я тебя с дороги накормил, коль хочешь жить тут, будешь у меня тут за вместо юнги"
+    ded "марш работать!"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+
+    gg "Не было печали…"
+    
+    hide ded
+
+    scene wood chopping
+
+
+    hide gg stay
+    
+    show ded at left:
+        xsize 1920
+        ysize 1080
+
+    "ну что, не разучился ещё топором орудовать?"
+
+    hide ded
+    
+    
+    show gg stay at right:
+        xsize 1920
+        ysize 1080
+    gg "он во мне девочку совсем видит?"
+    
+    hide gg stay
+    "НЕ РАЗОЧАРУЙ ДЕДА"
+    
+
+    # default minigame_score = 0
+    
+    init python:
+        import random
+        import pygame
+
+        score = 0
+
+        class ChoppingGameCDD(renpy.Displayable):
+            def __init__(self):
+                super(ChoppingGameCDD, self).__init__()
+                
+                # --- Загрузка графики ---
+                self.sprite = renpy.displayable("images/minigames/image.png")
+                self.hit_frames = [renpy.displayable(f"images/minigames/animation_set/hit/r{i}.png") for i in range(2)]
+                self.miss_frames = [renpy.displayable(f"images/minigames/animation_set/miss/r{i}.png") for i in range(1)]
+                
+                # --- Состояние игры ---
+                self.level = 1
+                self.score = 0
+                self.cursor_speed = 500.0  # Скорость (пикселей в секунду)
+                self.cursor_x = 500.0
+                
+                self.win_zone_size = 40
+                self.win_zone_x = self.generate_win_x()
+                self.win_zone_moving = False
+                self.win_zone_moving_rate = 0.0
+                self.win_zone_direction = 1  # 1 - вправо, -1 - влево
+                
+                self.plays_counter = 0
+                self.LEVEL_PLAYS = 3
+                
+                # --- Анимации ---
+                self.current_anim = None
+                self.anim_start_st = 0
+                self.last_st = 0
+                
+
+            def generate_win_x(self):
+                # 500 (начало бара) + отступ. 700 - длина бара.
+                return 500 + random.randint(50, 650 - self.win_zone_size)
+
+            def change_level(self):
+                self.level += 1
+                if self.level == 2:
+                    self.win_zone_size = 20
+                elif self.level == 3:
+                    self.win_zone_size = 30
+                    self.cursor_speed *= 1.4
+                elif self.level == 4:
+                    self.win_zone_size = 20
+                    self.cursor_speed *= 1.1
+                elif self.level == 5:
+                    self.win_zone_moving = True
+                    self.win_zone_moving_rate = 100.0 # Скорость зоны
+                elif self.level == 6:
+                    self.win_zone_moving_rate = 150.0
+                    self.win_zone_size = 25
+                elif self.level == 7:
+                    return self.score
+                
+                return None
+
+                self.win_zone_x = self.generate_win_x()
+                renpy.restart_interaction()
+
+            def render(self, width, height, st, at):
+                render = renpy.Render(width, height)
+                
+                # Инициализация времени
+                if self.last_st == 0:
+                    self.last_st = st
+
+                dt = st - self.last_st
+                self.last_st = st
+
+                # 1. Фон (основной спрайт)
+                bg_render = renpy.render(self.sprite, width, height, st, at)
+                render.blit(bg_render, (0, 0))
+
+                # 2. Обновление позиций
+                self.cursor_x += self.cursor_speed * dt
+                if self.cursor_x > 1200: 
+                    self.cursor_x = 500
+
+                if self.win_zone_moving:
+                    self.win_zone_x += self.win_zone_moving_rate * self.win_zone_direction * dt
+                    if self.win_zone_x > 1100 or self.win_zone_x < 500:
+                        self.win_zone_direction *= -1
+                        # Гарантируем, что зона не выйдет за границы
+                        self.win_zone_x = max(500, min(1100, self.win_zone_x))
+
+                # 3. Логика анимации попадания/промаха
+                if self.current_anim is not None:
+                    anim_duration = 0.6  # 300 мс на всю анимацию
+                    time_since_anim = st - self.anim_start_st
+                    
+                    if time_since_anim < anim_duration:
+                        # Показываем анимацию
+                        frame_idx = int((time_since_anim / anim_duration) * len(self.current_anim))
+                        frame_idx = min(frame_idx, len(self.current_anim) - 1)
+                        
+                        anim_disp = self.current_anim[frame_idx]
+                        fr_render = renpy.render(anim_disp, width, height, st, at)
+                        render.blit(fr_render, (0, 0))
+                        
+                        # Запрашиваем перерисовку для следующего кадра
+                        renpy.redraw(self, 0.01)
+                    else:
+                        # Анимация закончилась
+                        self.current_anim = None
+
+                # 4. Рисование игровых элементов
+                canvas = render.canvas()
+                
+                # Серый бар (фон)
+                canvas.rect("#909090", (500, 1000, 700, 30))
+                
+                # Зеленая зона успеха
+                win_color = "#84fc00"
+                if self.current_anim == self.hit_frames and time_since_anim < 0.3:
+                    # Мигание при попадании
+                    if int(st * 10) % 2 == 0:
+                        win_color = "#ffffff"
+                
+                canvas.rect(win_color, (int(self.win_zone_x), 1000, self.win_zone_size, 30))
+                
+                # Курсор
+                cursor_color = "#ffffff"
+                if self.current_anim == self.miss_frames and time_since_anim < 0.3:
+                    cursor_color = "#ff0000"  # Красный при промахе
+                elif self.current_anim == self.hit_frames and time_since_anim < 0.3:
+                    cursor_color = "#00ff00"  # Зеленый при попадании
+                
+                canvas.rect(cursor_color, (int(self.cursor_x), 1000, 3, 30))
+                
+                # Рамка вокруг зоны
+                canvas.rect("#000000", (int(self.win_zone_x), 1000, self.win_zone_size, 30), width=2)
+
+
+                if self.current_anim is None:
+                    renpy.redraw(self, 1.0 / 90.0)  # 90 FPS для плавного движения
+                else:
+                    renpy.redraw(self, 0.01)  # Быстрая перерисовка для анимации
+
+
+                return render
+
+            def event(self, ev, x, y, st):
+                # Всегда обрабатываем события для обновления состояния
+                if ev.type == pygame.KEYDOWN:
+                    if ev.key == pygame.K_SPACE:
+                        # Проверка попадания
+                        is_hit = self.win_zone_x <= self.cursor_x <= (self.win_zone_x + self.win_zone_size)
+                        
+                        if is_hit:
+                            self.score += 10 * self.level
+                            self.current_anim = self.hit_frames
+                        else:
+                            self.current_anim = self.miss_frames
+                        
+                        self.anim_start_st = st
+                        self.plays_counter += 1
+                        
+                        # Логика уровней
+                        if self.plays_counter >= self.LEVEL_PLAYS:
+                            self.plays_counter = 0
+                            score = self.change_level()
+
+                            if score:
+                                store.minigame_score = self.score
+                                return score
+                        else:
+                            self.win_zone_x = self.generate_win_x()
+                        
+                        # Обновляем отображение
+                        renpy.redraw(self, 0)
+                    
+                
+                # ВАЖНО: Возвращаем None только если не хотим завершить экран
+                # Это позволяет Ren'Py продолжать обновлять дисплей
+                return None
+
+            def visit(self):
+                return [self.sprite] + self.hit_frames + self.miss_frames
+
+    screen chopping_minigame():
+        add ChoppingGameCDD()
+        
+
+
+
+    call screen chopping_minigame
+
+
+    scene wood chopping
+
+    show ded at center:
+        xsize 1024
+        ysize 720
+
+    "You have [minigame_score] points."
+
+
+
+
+    
+    # завершение сценария
+    return
     
     hide gg stay
     "Матвей заходит в дом"
