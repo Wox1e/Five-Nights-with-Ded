@@ -297,7 +297,7 @@ label playground:
     gg "И без твоего разрешения прошел уже"
     gg "Я тут у тебя временно перекантуюсь, отдохну так сказать, в этой дыре Так что  я мешать не буду и ты не мешай, дальше своими делами старческими занимайся"
     
-    show ded stay at left:
+    show ded at left:
         xsize 800
         ysize 600
 
@@ -717,7 +717,7 @@ label playground:
     
     scene house livingroom
     
-    show ded stay at left:
+    show ded at left:
         xsize 800
         ysize 600
     ded "музычку решил послушать?"
@@ -731,7 +731,7 @@ label playground:
     hide gg stay
     "отодвинув коробку с медалями в сторону и как можно скорее запихнув сумку подальше, Матвей наконец вылез из-под кровать, стараясь не показывать своим видом лёгкий испуг, что испытал секундой ранее"
     
-    show ded stay at left:
+    show ded at left:
         xsize 800
         ysize 600
     ded "Смотрю, ты быстро тут освоился. Пошли хоть чай попьешь, расскажешь как оно в городе-то"
@@ -747,7 +747,7 @@ label playground:
     show gg stay
     gg "Эээ,  да то тут то там, проблем по мелочи нахватал, вот отдохнуть решил."
     
-    show ded stay at left:
+    show ded at left:
         xsize 800
         ysize 600
     ded "Ээх, всё и сразу никогда не получишь, не просто так ведь говорили тебе старики"
@@ -757,7 +757,7 @@ label playground:
         ysize 600
     gg "Да чтоб ты ещё понимал ….. старый."
     
-    show ded stay at left:
+    show ded at left:
         xsize 800
         ysize 600
     ded "Так, не ёрничай мне тут. А ну рассказывай, куда ввязался"
@@ -770,7 +770,7 @@ label playground:
     hide gg stay
     "после этих слов лицо Захара Ивановича утратило свою угрюмость, он слегка потупился, но потом невозмутимо продолжил"
     
-    show ded stay at left:
+    show ded at left:
         xsize 800
         ysize 600
     ded "Ты с дороги устал наверно, а после долго пути нет ничего приятнее, чем сходить в хорошую баньку"
@@ -780,13 +780,13 @@ label playground:
         ysize 600
     gg "Ох не нравится мне это"
     
-    show ded stay at left:
+    show ded at left:
         xsize 800
         ysize 600
     ded "А её сперва нужно заслужить"
     
     # дед резко хмуреет, косо смотрит, встаёт из-за стола
-    show ded stay at left:
+    show ded at left:
         xsize 800
         ysize 600
     ded "я тебя с дороги накормил, коль хочешь жить тут, будешь у меня тут за вместо юнги"
@@ -798,20 +798,20 @@ label playground:
 
     gg "Не было печали…"
     
-    hide ded stay
+    hide ded
 
     scene wood chopping
 
 
     hide gg stay
     
-    show ded stay at left:
+    show ded at left:
         xsize 1920
         ysize 1080
 
     "ну что, не разучился ещё топором орудовать?"
 
-    hide ded stay
+    hide ded
     
     
     show gg stay at right:
@@ -1020,7 +1020,7 @@ label playground:
 
     scene wood chopping
 
-    show ded stay at center:
+    show ded at center:
         xsize 1024
         ysize 720
 
