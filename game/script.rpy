@@ -236,7 +236,8 @@ label playground:
     show gg stay
 
     gg "Так, ладно. Дед должен быть дома, ну-ка"
-    "делает 3 попытки постучать в дверь, никто не открывает"
+    
+    # гг делает 3 попытки постучать в дверь, никто не открывает
     gg "Вот старый же, куда запропастился только?"
     gg "Ладно, обойду дом, может чего полезного найду"
 
@@ -251,9 +252,8 @@ label playground:
     show gg stay
 
     gg "После того как бабка померла, сад представляет собой лишь тень прошлой красоты"
-    gg "Не то чтобы он раньше был прям произведением искусствa"
+    gg "Не то чтобы он раньше был прям произведением искусства"
     gg "Но сейчас тем более"
-    "*поворачивается и видит песочницу*"
     gg "а вот тут я любил играть…"
     gg "когда-то давно дед с отцом наметили какую-то стройку или ремонт, закупили песка и высыпали прямо здесь"
     gg "таким образом я и получил эту импровизированную песочницу"
@@ -290,10 +290,21 @@ label playground:
 
     ded "<цок> здравствуй, матвейка"
     ded "а маленький такой добрый, вежливый был. Проходи уж"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
     gg "И без твоего разрешения прошел уже"
     gg "Я тут у тебя временно перекантуюсь, отдохну так сказать, в этой дыре Так что  я мешать не буду и ты не мешай, дальше своими делами старческими занимайся"
+    
+    show ded stay at left:
+        xsize 800
+        ysize 600
+
     ded "А я то уж думал, навестить пришел на старости лет, эх ты."
     ded "Ну проходи, комната сам знаешь где"
+    
+    show gg stay
     gg "ага, не забыл уж"
 
     "Матвей заходит в дом"
@@ -660,3 +671,364 @@ label playground:
     # завершение сценария
     return
     
+    hide gg stay
+    "Матвей заходит в дом"
+    
+    scene house livingroom
+
+    show gg stay
+    gg "Надо же, вроде и времени сколько прошло, а тут все так же. Начиная от каждой вещички, заканчивая звуком крутящегося счётчика на стене"
+    gg "даже отрывной календарь остался висеть тот же"
+    gg "мда…"
+    
+    hide gg stay
+    "действительно, комната казалась как будто законсервированной, в воздухе так и витало чувство ностальгии."
+    "тут и черно-белые картины молодых бабушки с дедушкой и отец в детстве, ковёр на стене, старенькая добротная кровать на стальной сетке"
+    gg "и непременный дедушкин кассетный радиоприемник"
+    
+    hide gg stay
+    "только весь интерьер казался немного более пыльным, чем прежде, но картину это ни капли не омрачало"
+    
+    show gg stay
+    gg "и какой же музыкой он себя развлекал тут?"
+    gg "интересно, он ещё вообще рабочий?"
+    # гг выключает радио
+    gg "что ж, недурно"
+    gg "у деда определенно есть музыкальный вкус"
+    gg "сорокалетней выдержки"
+    
+    gg "ладно, надо б уже располагаться в этой комнате"
+    gg "и желательно запрятать бы свою сумку подальше от старого"
+    gg "например под кровать"
+    
+    hide gg stay
+    "но при попытке спрятать что-то помешало багажу уместиться подальше под кроватью"
+    "это была небольшая коробочка с чем-то звенящим внутри"
+    
+    scene house medal box
+
+    gg "медали"
+    gg "точно, дед же во время войны служил где-то на флоте"
+    gg "а вообще странно, что он режил спрятать их здесь, в темноте и пыли подальше ото всех"
+    gg "особенно его гордость: медали “За отвагу” и “Оборону ленинграда”"
+    gg "были б у меня такие медали.."
+    
+    "дед заходит в комнату"
+    
+    scene house livingroom
+    
+    show ded stay at left:
+        xsize 800
+        ysize 600
+    ded "музычку решил послушать?"
+    
+
+
+    "Захар Иванович незаметно прокрался в комнату, застав врасплох своего внука, так что Матвей даже чуть вздрогнул от неожиданности"
+    gg "блин, не вовремя он конечно"
+    gg "главное, чтоб он по моей реакции ничего не подумал и не начал задавать лишних вопросов"
+    
+    hide gg stay
+    "отодвинув коробку с медалями в сторону и как можно скорее запихнув сумку подальше, Матвей наконец вылез из-под кровать, стараясь не показывать своим видом лёгкий испуг, что испытал секундой ранее"
+    
+    show ded stay at left:
+        xsize 800
+        ysize 600
+    ded "Смотрю, ты быстро тут освоился. Пошли хоть чай попьешь, расскажешь как оно в городе-то"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+    gg "Ладно,  дают - бери."
+    
+    hide gg stay
+    "ну что, внучек, что тебя привело обратно к нам?"
+    
+    show gg stay
+    gg "Эээ,  да то тут то там, проблем по мелочи нахватал, вот отдохнуть решил."
+    
+    show ded stay at left:
+        xsize 800
+        ysize 600
+    ded "Ээх, всё и сразу никогда не получишь, не просто так ведь говорили тебе старики"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+    gg "Да чтоб ты ещё понимал ….. старый."
+    
+    show ded stay at left:
+        xsize 800
+        ysize 600
+    ded "Так, не ёрничай мне тут. А ну рассказывай, куда ввязался"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+    gg "Хватит допытываться, а то больше на бабку нашу походишь любопытством."
+    
+    hide gg stay
+    "после этих слов лицо Захара Ивановича утратило свою угрюмость, он слегка потупился, но потом невозмутимо продолжил"
+    
+    show ded stay at left:
+        xsize 800
+        ysize 600
+    ded "Ты с дороги устал наверно, а после долго пути нет ничего приятнее, чем сходить в хорошую баньку"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+    gg "Ох не нравится мне это"
+    
+    show ded stay at left:
+        xsize 800
+        ysize 600
+    ded "А её сперва нужно заслужить"
+    
+    # дед резко хмуреет, косо смотрит, встаёт из-за стола
+    show ded stay at left:
+        xsize 800
+        ysize 600
+    ded "я тебя с дороги накормил, коль хочешь жить тут, будешь у меня тут за вместо юнги"
+    ded "марш работать!"
+    
+    show gg stay at right:
+        xsize 800
+        ysize 600
+
+    gg "Не было печали…"
+    
+    hide ded stay
+
+    scene wood chopping
+
+
+    hide gg stay
+    
+    show ded stay at left:
+        xsize 1920
+        ysize 1080
+
+    "ну что, не разучился ещё топором орудовать?"
+
+    hide ded stay
+    
+    
+    show gg stay at right:
+        xsize 1920
+        ysize 1080
+    gg "он во мне девочку совсем видит?"
+    
+    hide gg stay
+    "НЕ РАЗОЧАРУЙ ДЕДА"
+    
+
+    # default minigame_score = 0
+    
+    init python:
+        import random
+        import pygame
+
+        score = 0
+
+        class ChoppingGameCDD(renpy.Displayable):
+            def __init__(self):
+                super(ChoppingGameCDD, self).__init__()
+                
+                # --- Загрузка графики ---
+                self.sprite = renpy.displayable("images/minigames/image.png")
+                self.hit_frames = [renpy.displayable(f"images/minigames/animation_set/hit/r{i}.png") for i in range(2)]
+                self.miss_frames = [renpy.displayable(f"images/minigames/animation_set/miss/r{i}.png") for i in range(1)]
+                
+                # --- Состояние игры ---
+                self.level = 1
+                self.score = 0
+                self.cursor_speed = 500.0  # Скорость (пикселей в секунду)
+                self.cursor_x = 500.0
+                
+                self.win_zone_size = 40
+                self.win_zone_x = self.generate_win_x()
+                self.win_zone_moving = False
+                self.win_zone_moving_rate = 0.0
+                self.win_zone_direction = 1  # 1 - вправо, -1 - влево
+                
+                self.plays_counter = 0
+                self.LEVEL_PLAYS = 3
+                
+                # --- Анимации ---
+                self.current_anim = None
+                self.anim_start_st = 0
+                self.last_st = 0
+                
+
+            def generate_win_x(self):
+                # 500 (начало бара) + отступ. 700 - длина бара.
+                return 500 + random.randint(50, 650 - self.win_zone_size)
+
+            def change_level(self):
+                self.level += 1
+                if self.level == 2:
+                    self.win_zone_size = 20
+                elif self.level == 3:
+                    self.win_zone_size = 30
+                    self.cursor_speed *= 1.4
+                elif self.level == 4:
+                    self.win_zone_size = 20
+                    self.cursor_speed *= 1.1
+                elif self.level == 5:
+                    self.win_zone_moving = True
+                    self.win_zone_moving_rate = 100.0 # Скорость зоны
+                elif self.level == 6:
+                    self.win_zone_moving_rate = 150.0
+                    self.win_zone_size = 25
+                elif self.level == 7:
+                    return self.score
+                
+                return None
+
+                self.win_zone_x = self.generate_win_x()
+                renpy.restart_interaction()
+
+            def render(self, width, height, st, at):
+                render = renpy.Render(width, height)
+                
+                # Инициализация времени
+                if self.last_st == 0:
+                    self.last_st = st
+
+                dt = st - self.last_st
+                self.last_st = st
+
+                # 1. Фон (основной спрайт)
+                bg_render = renpy.render(self.sprite, width, height, st, at)
+                render.blit(bg_render, (0, 0))
+
+                # 2. Обновление позиций
+                self.cursor_x += self.cursor_speed * dt
+                if self.cursor_x > 1200: 
+                    self.cursor_x = 500
+
+                if self.win_zone_moving:
+                    self.win_zone_x += self.win_zone_moving_rate * self.win_zone_direction * dt
+                    if self.win_zone_x > 1100 or self.win_zone_x < 500:
+                        self.win_zone_direction *= -1
+                        # Гарантируем, что зона не выйдет за границы
+                        self.win_zone_x = max(500, min(1100, self.win_zone_x))
+
+                # 3. Логика анимации попадания/промаха
+                if self.current_anim is not None:
+                    anim_duration = 0.6  # 300 мс на всю анимацию
+                    time_since_anim = st - self.anim_start_st
+                    
+                    if time_since_anim < anim_duration:
+                        # Показываем анимацию
+                        frame_idx = int((time_since_anim / anim_duration) * len(self.current_anim))
+                        frame_idx = min(frame_idx, len(self.current_anim) - 1)
+                        
+                        anim_disp = self.current_anim[frame_idx]
+                        fr_render = renpy.render(anim_disp, width, height, st, at)
+                        render.blit(fr_render, (0, 0))
+                        
+                        # Запрашиваем перерисовку для следующего кадра
+                        renpy.redraw(self, 0.01)
+                    else:
+                        # Анимация закончилась
+                        self.current_anim = None
+
+                # 4. Рисование игровых элементов
+                canvas = render.canvas()
+                
+                # Серый бар (фон)
+                canvas.rect("#909090", (500, 1000, 700, 30))
+                
+                # Зеленая зона успеха
+                win_color = "#84fc00"
+                if self.current_anim == self.hit_frames and time_since_anim < 0.3:
+                    # Мигание при попадании
+                    if int(st * 10) % 2 == 0:
+                        win_color = "#ffffff"
+                
+                canvas.rect(win_color, (int(self.win_zone_x), 1000, self.win_zone_size, 30))
+                
+                # Курсор
+                cursor_color = "#ffffff"
+                if self.current_anim == self.miss_frames and time_since_anim < 0.3:
+                    cursor_color = "#ff0000"  # Красный при промахе
+                elif self.current_anim == self.hit_frames and time_since_anim < 0.3:
+                    cursor_color = "#00ff00"  # Зеленый при попадании
+                
+                canvas.rect(cursor_color, (int(self.cursor_x), 1000, 3, 30))
+                
+                # Рамка вокруг зоны
+                canvas.rect("#000000", (int(self.win_zone_x), 1000, self.win_zone_size, 30), width=2)
+
+
+                if self.current_anim is None:
+                    renpy.redraw(self, 1.0 / 90.0)  # 90 FPS для плавного движения
+                else:
+                    renpy.redraw(self, 0.01)  # Быстрая перерисовка для анимации
+
+
+                return render
+
+            def event(self, ev, x, y, st):
+                # Всегда обрабатываем события для обновления состояния
+                if ev.type == pygame.KEYDOWN:
+                    if ev.key == pygame.K_SPACE:
+                        # Проверка попадания
+                        is_hit = self.win_zone_x <= self.cursor_x <= (self.win_zone_x + self.win_zone_size)
+                        
+                        if is_hit:
+                            self.score += 10 * self.level
+                            self.current_anim = self.hit_frames
+                        else:
+                            self.current_anim = self.miss_frames
+                        
+                        self.anim_start_st = st
+                        self.plays_counter += 1
+                        
+                        # Логика уровней
+                        if self.plays_counter >= self.LEVEL_PLAYS:
+                            self.plays_counter = 0
+                            score = self.change_level()
+
+                            if score:
+                                store.minigame_score = self.score
+                                return score
+                        else:
+                            self.win_zone_x = self.generate_win_x()
+                        
+                        # Обновляем отображение
+                        renpy.redraw(self, 0)
+                    
+                
+                # ВАЖНО: Возвращаем None только если не хотим завершить экран
+                # Это позволяет Ren'Py продолжать обновлять дисплей
+                return None
+
+            def visit(self):
+                return [self.sprite] + self.hit_frames + self.miss_frames
+
+    screen chopping_minigame():
+        add ChoppingGameCDD()
+        
+
+
+
+    call screen chopping_minigame
+
+
+    scene wood chopping
+
+    show ded stay at center:
+        xsize 1024
+        ysize 720
+
+    "You have [minigame_score] points."
+
+
+
+
+    
+    # завершение сценария
+    return
