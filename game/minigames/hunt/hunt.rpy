@@ -199,7 +199,7 @@ init python:
                 self.round_end(random.choice(words))
                 return
             if self.status.is_time_up():
-                self.round_end("время...")
+                self.round_end("они рядом...")
                 return
     
         # Define the Player class
