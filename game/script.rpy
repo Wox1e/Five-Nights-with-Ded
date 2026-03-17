@@ -27,13 +27,24 @@ image garden = "garden.png"
 image behind_house = "behind_house.png"
 
 image house_medal_box = "house_medal_box.png"
+image house_kitchen = "house_kitchen.png"
+
 
 image gg stay = "gg.png"
 
 
+label hunt:
+    "Hunting Game"
+    window hide
+    $ my_game_config = GameConfig(target_nb=4, time_limit=15, life_max=5, round_nb=4, bullet_max=20)
+    $ hunt = HuntingGame(my_game_config)
+    $ hunt.run()
+    scene black
+    "Finish Hunting"
 
 # Игра начинается здесь:
 label start:
+    jump hunt
     stop music
     play sound "bus_long.ogg"
     scene bus_window_factory 
@@ -243,7 +254,6 @@ label playground:
 
     hide gg stay
     "входит в сад"
-    scene garden
 
     "Первое впечатление о саде оказалось всё-таки немного ошибочным - он не был заброшен абсолютно"
     "Да, он не был настолько прилежно ухожен как раньше, но было видно, как кто-то продолжал за ним ухаживать"
@@ -1025,6 +1035,27 @@ label playground:
         ysize 720
 
     "You have [minigame_score] points."
+
+    ##
+
+    ##
+
+
+    scene house_kitchen
+
+    show gg stay at right:
+        xsize 800
+        ysize 600
+
+    show ded at left:
+        xsize 1920
+        ysize 1080
+
+    
+    ded "Так рубить дрова и не научился..."
+
+
+
 
 
 
