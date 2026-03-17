@@ -35,18 +35,20 @@ image house_kitchen = "house_kitchen.png"
 image gg stay = "gg.png"
 
 
-label hunt:
-    "Hunting Game"
-    window hide
-    $ my_game_config = GameConfig(target_nb=4, time_limit=15, life_max=5, round_nb=4, bullet_max=20)
-    $ hunt = HuntingGame(my_game_config)
-    $ hunt.run()
-    scene black
-    "Finish Hunting"
+    # Мини игра со стрельбой
+    # window hide
+    # $ my_game_config = GameConfig(target_nb=4, time_limit=15, life_max=5, round_nb=6, bullet_max=20)
+    # $ hunt = HuntingGame(my_game_config)
+    # $ hunt.run()
+    # scene black
+
+
 
 # Игра начинается здесь:
 label start:
-    jump hunt
+
+
+
     stop music
     play sound "bus_long.ogg"
     scene bus_window_factory 
