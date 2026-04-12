@@ -21,7 +21,7 @@ image PdidiHouse = "PdidiHouse.png"
 image PididiHouseInside = "PididiHouseInside.png"
 image way_to_Pdidi = "way_to_Pdidi.png"
 image babka_house = "babka_house.png"
-image babka_hallway = "babka_hallway.png"
+image babka_hallway = "babka_hallway.jpg"
 image babka_s_chikens = "babka_s_chikens.png"
 image lake = "lake.png"
 image lake_fire = "lake_fire.png"
@@ -32,6 +32,7 @@ image playground = "playground.png"
 image house_livingroom = "house_living_room.png"
 image house_livingroom_night = "house_living_room_night.png"
 
+image egg_ded = "egg_ded.png"
 
 image wood chopping = "minigames/image.png"
 
@@ -795,7 +796,7 @@ label day2:
     ded "Вот видишь дома и стены помогают"
     ded "Пошли завтракать"
 
-    stop sound "morning.ogg"
+    stop sound
 
     "Дед махнул рукой в направлении кухни, куда и отправился"
     hide ded
@@ -1086,6 +1087,13 @@ label lose_naperski:
     "Ладно, я пошутил :)"
     ""
     "Матвей очнулся. Рядом сидел его новый собутыльник"
+
+    scene PididiHouseInside
+
+    show pdd at right:
+        xsize 900
+        ysize 650
+
     pdd "Не ссы, тормозуху я перегонял. Скоро вернётся к тебе зрение"
     pdd "Жить будешь"
     pdd "Ты конечно проиграл {p} Но продолжал играть"
@@ -1106,13 +1114,15 @@ label win_naperski:
 
 label day2_after_pdd:
 
-    scene way_to_Pdidi
+   
 
     "Пётр Дмитрич ушел и через минуту вернулся. Он держал в руках обещанный аппарат"
     pdd "Держи, заслужил"
 
     "Самогонный аппарат x1 добавлен в ивентарь"
     pdd "Ладно, иди к деду. Обрадуй старика"
+
+    scene way_to_Pdidi
 
     "Матвей выдвинулся в направлении дома Захара Ивановича, неся бесценную добычу"
     "Опьянение давало о себе знать, деревенский пейзаж плыл в глазах Матвея"
@@ -1212,8 +1222,19 @@ label day2_after_pdd:
 
     gg "*Прокашливается* Утро добрым не бывает" 
     gg "Ты зачем так пугаешь? А если бы я.." 
+
+    show ded at right:
+        xsize 800
+        ysize 600
+
     ded "Ладно, ладно, не ёжься. Завтракать-то будешь?" 
     gg "Было бы неплохо"
+
+    
+    show gg at left:
+        xsize 800
+        ysize 600
+
     ded "Это хорошо. Тогда иди приготовь и мне заодно" 
     gg "М-да.. Стоило ожидать" 
     ded "Хватит уже валяться, иди-иди. Будешь отрабатывать своё" 
@@ -1230,12 +1251,19 @@ label day2_after_pdd:
     ded "Потом ещё инструкций выдам"
     gg "Да иду я, иду"
 
-    scene babka_house
+    scene egg_ded
     gg "М-да, ну и грязюка тут"
 
     # *Мини-игра с подсчётом и кур и яиц*
 
     scene house_kitchen
+
+    "Так надо их пересчитать"
+    menu:
+        "Забрать яйца":
+            $ pass
+
+        
 
     gg "Держи вот свои яйца"
     ded "Не мои, а наши"
