@@ -20,7 +20,9 @@ image razvilka = "razvilka.png"
 image PdidiHouse = "PididiHouse.png"
 image PididiHouseInside = "PididiHouseInside.png"
 image way_to_Pdidi = "way_to_Pdidi.png"
-
+image babka_house = "babka_house.png"
+image babka_hallway = "babka_hallway.png"
+image babka_s_chikens = "babka_s_chikens.png"
 image lake = "lake.png"
 image lake_fire = "lake_fire.png"
 image school = "school.png"
@@ -1173,7 +1175,7 @@ label day2_after_pdd:
     ded "Потом ещё инструкций выдам"
     gg "Да иду я, иду"
 
-    # *картинка курятника*
+    scene babka_house
     gg "М-да, ну и грязюка тут"
 
     # *Мини-игра с подсчётом и кур и яиц*
@@ -1228,7 +1230,7 @@ label day2_after_pdd:
     gg "апроегмн, Да тут же только петухи! Мужики, вы чего?!" 
     gg "Чувствую будет весело"
 
-    # * коридор бабки, слева и справа на стенах портрет Прокопенко, в углу домик петуха Мишани"
+    scene babka_hallway
     # %тот же звук петухов, только тише + фрагмент из речи прокопенко%
 
     # Петух выглядывает из домика (торчит бошка) 
@@ -1260,7 +1262,7 @@ label day2_after_pdd:
     gg "30 секунд до чего?"
     bab "До кладки яиц, внучек, до кладки яиц!"
     "Казалось бы, щупленькая бабуся с такой силой дернула героя, что тот буквально вылетел на улицу, вспоминая в полете все свои грехи и думая где же он таак провинился"
-    # *Картинка дома сбоку, на крыше сидят петухи*
+    scene babka_s_chikens
     bab "Держи корзину и лови яйца"
     "Петухи на крыше как-то странно закудахтали"
     ### Мини игра
