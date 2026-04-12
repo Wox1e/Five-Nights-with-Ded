@@ -143,7 +143,6 @@ label start:
 
     scene razvilka
 
-    scene black_bg
     show gg stay
     gg "И куда же тут идти то… Надо подумать."
     
