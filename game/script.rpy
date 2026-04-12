@@ -108,7 +108,7 @@ label start:
     gg "Опять со стариком ютится, от одной мысли об этом угрюмом хрыче тошно. Если б не отец… Сейчас бы жил как все."
     
 
-    ## Звук торможения автобуса
+    play sound "tormoz.ogg"
     
     hide gg stay
     scene black_bg
@@ -304,6 +304,7 @@ label playground:
     while knock_tries < 3:
         menu optional_name:
             "Постучать":
+                play sound "knock.ogg"
                 "Матвей постучал в дверь"
                 "[knock_results[knock_tries]]"
                 $ knock_tries += 1
@@ -546,12 +547,10 @@ label playground:
             def __init__(self):
                 super(ChoppingGameCDD, self).__init__()
                 
-                # --- Загрузка графики ---
                 self.sprite = renpy.displayable("images/minigames/image.png")
                 self.hit_frames = [renpy.displayable(f"images/minigames/animation_set/hit/r{i}.png") for i in range(2)]
                 self.miss_frames = [renpy.displayable(f"images/minigames/animation_set/miss/r{i}.png") for i in range(1)]
-                
-                # --- Состояние игры ---
+
                 self.level = 1
                 self.score = 0
                 self.cursor_speed = 500.0  # Скорость (пикселей в секунду)
@@ -566,7 +565,6 @@ label playground:
                 self.plays_counter = 0
                 self.LEVEL_PLAYS = 3
                 
-                # --- Анимации ---
                 self.current_anim = None
                 self.anim_start_st = 0
                 self.last_st = 0
@@ -610,11 +608,9 @@ label playground:
                 dt = st - self.last_st
                 self.last_st = st
 
-                # 1. Фон (основной спрайт)
                 bg_render = renpy.render(self.sprite, width, height, st, at)
                 render.blit(bg_render, (0, 0))
 
-                # 2. Обновление позиций
                 self.cursor_x += self.cursor_speed * dt
                 if self.cursor_x > 1200: 
                     self.cursor_x = 500
@@ -626,42 +622,35 @@ label playground:
                         # Гарантируем, что зона не выйдет за границы
                         self.win_zone_x = max(500, min(1100, self.win_zone_x))
 
-                # 3. Логика анимации попадания/промаха
                 if self.current_anim is not None:
                     anim_duration = 0.6  # 300 мс на всю анимацию
                     time_since_anim = st - self.anim_start_st
                     
                     if time_since_anim < anim_duration:
-                        # Показываем анимацию
                         frame_idx = int((time_since_anim / anim_duration) * len(self.current_anim))
                         frame_idx = min(frame_idx, len(self.current_anim) - 1)
                         
                         anim_disp = self.current_anim[frame_idx]
                         fr_render = renpy.render(anim_disp, width, height, st, at)
                         render.blit(fr_render, (0, 0))
-                        
-                        # Запрашиваем перерисовку для следующего кадра
+
                         renpy.redraw(self, 0.01)
                     else:
-                        # Анимация закончилась
+
                         self.current_anim = None
 
-                # 4. Рисование игровых элементов
                 canvas = render.canvas()
                 
-                # Серый бар (фон)
                 canvas.rect("#909090", (500, 1000, 700, 30))
                 
-                # Зеленая зона успеха
                 win_color = "#84fc00"
                 if self.current_anim == self.hit_frames and time_since_anim < 0.3:
-                    # Мигание при попадании
+
                     if int(st * 10) % 2 == 0:
                         win_color = "#ffffff"
                 
                 canvas.rect(win_color, (int(self.win_zone_x), 1000, self.win_zone_size, 30))
                 
-                # Курсор
                 cursor_color = "#ffffff"
                 if self.current_anim == self.miss_frames and time_since_anim < 0.3:
                     cursor_color = "#ff0000"  # Красный при промахе
@@ -683,10 +672,9 @@ label playground:
                 return render
 
             def event(self, ev, x, y, st):
-                # Всегда обрабатываем события для обновления состояния
                 if ev.type == pygame.KEYDOWN:
                     if ev.key == pygame.K_SPACE:
-                        # Проверка попадания
+
                         is_hit = self.win_zone_x <= self.cursor_x <= (self.win_zone_x + self.win_zone_size)
                         
                         if is_hit:
@@ -698,7 +686,7 @@ label playground:
                         self.anim_start_st = st
                         self.plays_counter += 1
                         
-                        # Логика уровней
+
                         if self.plays_counter >= self.LEVEL_PLAYS:
                             self.plays_counter = 0
                             score = self.change_level()
@@ -709,12 +697,9 @@ label playground:
                         else:
                             self.win_zone_x = self.generate_win_x()
                         
-                        # Обновляем отображение
+
                         renpy.redraw(self, 0)
                     
-                
-                # ВАЖНО: Возвращаем None только если не хотим завершить экран
-                # Это позволяет Ren'Py продолжать обновлять дисплей
                 return None
 
             def visit(self):
@@ -794,7 +779,7 @@ label playground:
 
 
 label day2:
-    # Звук утра
+    play sound "morning.ogg"
     scene house_livingroom
 
     "За окном было утро, пели птицы. Обстановка вокруг олицетворяла собой полное спокойствие"
@@ -810,6 +795,7 @@ label day2:
     ded "Вот видишь дома и стены помогают"
     ded "Пошли завтракать"
 
+    stop sound "morning.ogg"
 
     "Дед махнул рукой в направлении кухни, куда и отправился"
     hide ded
@@ -1221,7 +1207,7 @@ label day2_after_pdd:
     gg "Не нравится мне твоя ухмылка" 
 
     scene babka_house
-    #%Петушиные крики%
+    play sound "rooster.ogg"
     gg "Как-то много петухи орут. Неужели с таким количеством петухов куры не несутся"
     gg "Как она вообще живёт в таком шуме" 
 
@@ -1231,7 +1217,7 @@ label day2_after_pdd:
     gg "Чувствую будет весело"
 
     scene babka_hallway
-    # %тот же звук петухов, только тише + фрагмент из речи прокопенко%
+    play sound "rooster2.ogg"
 
     # Петух выглядывает из домика (торчит бошка) 
     # Петух вышел из домика и смотрит одним глазом
@@ -1349,7 +1335,7 @@ label day2_after_pdd:
 
 
         "Тысяча чертей прямо за забором, детка":
-            # %Визг свиньи или хз чей%
+            play sound "pig.ogg"
             bab "ААААААААААА"
             gg "Да чтоб тебя"
             # *Картинка улицы и вдали два силуэта (можно просто улицу, силуэты из персонажей прилепим) *
