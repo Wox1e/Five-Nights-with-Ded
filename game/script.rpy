@@ -1215,14 +1215,14 @@ label day2_after_pdd:
     raper "🔊🔊🔊🔊🔊🔊"
     raper "🔊🔊🔊🔊🔊🔊"
 
-    $ listened = (datetime.now() - begin_track).seconds
-
-    if listened > 10:
-        $ social_score += 25
 
 
     menu:
         "Пнуть":
+            $ listened = (datetime.now() - begin_track).seconds
+
+            if listened > 10:
+                $ social_score += 25
             stop sound
             "От удара от него полетели перья"
 
