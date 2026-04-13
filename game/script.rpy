@@ -8,6 +8,8 @@ define pdd = Character("П.Дмитрич", color="#c27100")
 
 define alkash_subject = Character("Субъект", color = "#0526ab")
 define bab = Character("Бабка", color = "#770081")
+define raper = Character("Репер", color = "#f5c800")
+
 
 image bus_window_factory = "bus_window_factory.png"
 image bus_window_village = "bus_window_village.png"
@@ -47,7 +49,7 @@ image babka_graden = "babka_garden.jpg"
 image babka_house = "babka_house.jpg"
 image babka_inside = "babka_inside.jpg"
 
-
+image misha = "misha.png"
 image gg stay = "gg.png"
 image pdd = "pdd.png"
 
@@ -62,7 +64,6 @@ image pdd = "pdd.png"
 
 # Игра начинается здесь:
 label start:
-
     stop music
     play sound "bus_long.ogg"
     scene bus_window_factory 
@@ -243,7 +244,7 @@ label playground:
     "Источаемый им запах пота и перегара дополнил местную духоту. {p} Аромат получился что надо"
 
     alkash_subject "Воот неожидано дорога поехала"
-    alkash_subject "Вот х***й его знает из-за чего это всё стало"
+    alkash_subject "Вот буй его знает из-за чего это всё стало"
     alkash_subject "Как будто инопришеленец..."
     alkash_subject "... инпрешеленец на своей ... неа"
     alkash_subject "как его"
@@ -340,7 +341,7 @@ label playground:
 
     gg "Так, и где там все-таки дед?"
     scene behind_house
-    "*заходит за дом где огород*"
+    "Матвей зашёл за дом"
 
     hide gg stay
     "За домом открылся вид на большое поле принадлежавшее хозяину дома. Половина была не засажено, а просто напросто заросшее"
@@ -962,7 +963,6 @@ label day2:
     hide gg stay
     hide pdd
 
-    # Тут описание двора Пидиди
 
     scene PididiHouseInside
     "Пётр Дмитрич уселся на табуретку и пригласил Матвея присесть тоже"
@@ -1184,7 +1184,33 @@ label day2_after_pdd:
     "Опьянение давало о себе знать, деревенский пейзаж плыл в глазах Матвея"
     "Он шёл покачиваясь и выглядел совсем как типичный обитатель этих мест"
 
-    "*тут появится диалог с петухом*"
+    "Кто-то двигался ему навстречу"
+    "Что"
+    "Да это же ОН"
+
+    show misha
+
+    raper "Йоу..."
+    gg "какого чёрта"
+    
+    raper "Ещкере"
+    play sound "rap.ogg"
+
+    raper "🔊🔊🔊🔊🔊🔊"
+    raper "🔊🔊🔊🔊🔊🔊"
+    raper "🔊🔊🔊🔊🔊🔊"
+
+
+    menu:
+        "Пнуть":
+            stop sound
+            "От удара от него полетели перья"
+
+    "Птица поспешно удалилась"
+
+    gg "Ну хоть тихо стало"
+    gg "Не надо такое больше пить, а то совсем кукухой поеду"
+
 
     scene house_kitchen
     "Ценой огромных усилий Матвей добрался до дома деда, занёс свою добычу на кухню"
@@ -1343,11 +1369,11 @@ label day2_after_pdd:
 
     if is_eggs_valid:
 
-        if eggs_num < 10:
+        if eggs_num < 9:
             ded "Нда, такой себе ты сыщик"
             gg "Так там и не было больше"
             ded "Да не оправдывайся ты"
-        elif eggs_num == 10:
+        elif eggs_num == 9:
             ded " О, глазастый какой!"
         else:
             ded "Ты считать не умеешь? Или свистнул у соседей?"
