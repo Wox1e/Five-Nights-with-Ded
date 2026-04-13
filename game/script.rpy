@@ -538,184 +538,184 @@ label playground:
 
     # default minigame_score = 0
     
-    init python:
-        import random
-        import pygame
+    # init python:
+    #     import random
+    #     import pygame
 
-        score = 0
+    #     score = 0
 
-        class ChoppingGameCDD(renpy.Displayable):
-            def __init__(self):
-                super(ChoppingGameCDD, self).__init__()
+    #     class ChoppingGameCDD(renpy.Displayable):
+    #         def __init__(self):
+    #             super(ChoppingGameCDD, self).__init__()
                 
-                self.sprite = renpy.displayable("images/minigames/image.png")
-                self.hit_frames = [renpy.displayable(f"images/minigames/animation_set/hit/r{i}.png") for i in range(2)]
-                self.miss_frames = [renpy.displayable(f"images/minigames/animation_set/miss/r{i}.png") for i in range(1)]
+    #             self.sprite = renpy.displayable("images/minigames/image.png")
+    #             self.hit_frames = [renpy.displayable(f"images/minigames/animation_set/hit/r{i}.png") for i in range(2)]
+    #             self.miss_frames = [renpy.displayable(f"images/minigames/animation_set/miss/r{i}.png") for i in range(1)]
 
-                self.level = 1
-                self.score = 0
-                self.cursor_speed = 500.0  # Скорость (пикселей в секунду)
-                self.cursor_x = 500.0
+    #             self.level = 1
+    #             self.score = 0
+    #             self.cursor_speed = 500.0  # Скорость (пикселей в секунду)
+    #             self.cursor_x = 500.0
                 
-                self.win_zone_size = 40
-                self.win_zone_x = self.generate_win_x()
-                self.win_zone_moving = False
-                self.win_zone_moving_rate = 0.0
-                self.win_zone_direction = 1  # 1 - вправо, -1 - влево
+    #             self.win_zone_size = 40
+    #             self.win_zone_x = self.generate_win_x()
+    #             self.win_zone_moving = False
+    #             self.win_zone_moving_rate = 0.0
+    #             self.win_zone_direction = 1  # 1 - вправо, -1 - влево
                 
-                self.plays_counter = 0
-                self.LEVEL_PLAYS = 3
+    #             self.plays_counter = 0
+    #             self.LEVEL_PLAYS = 3
                 
-                self.current_anim = None
-                self.anim_start_st = 0
-                self.last_st = 0
+    #             self.current_anim = None
+    #             self.anim_start_st = 0
+    #             self.last_st = 0
                 
 
-            def generate_win_x(self):
-                # 500 (начало бара) + отступ. 700 - длина бара.
-                return 500 + random.randint(50, 650 - self.win_zone_size)
+    #         def generate_win_x(self):
+    #             # 500 (начало бара) + отступ. 700 - длина бара.
+    #             return 500 + random.randint(50, 650 - self.win_zone_size)
 
-            def change_level(self):
-                self.level += 1
-                if self.level == 2:
-                    self.win_zone_size = 20
-                elif self.level == 3:
-                    self.win_zone_size = 30
-                    self.cursor_speed *= 1.4
-                elif self.level == 4:
-                    self.win_zone_size = 20
-                    self.cursor_speed *= 1.1
-                elif self.level == 5:
-                    self.win_zone_moving = True
-                    self.win_zone_moving_rate = 100.0 # Скорость зоны
-                elif self.level == 6:
-                    self.win_zone_moving_rate = 150.0
-                    self.win_zone_size = 25
-                elif self.level == 7:
-                    return self.score
+    #         def change_level(self):
+    #             self.level += 1
+    #             if self.level == 2:
+    #                 self.win_zone_size = 20
+    #             elif self.level == 3:
+    #                 self.win_zone_size = 30
+    #                 self.cursor_speed *= 1.4
+    #             elif self.level == 4:
+    #                 self.win_zone_size = 20
+    #                 self.cursor_speed *= 1.1
+    #             elif self.level == 5:
+    #                 self.win_zone_moving = True
+    #                 self.win_zone_moving_rate = 100.0 # Скорость зоны
+    #             elif self.level == 6:
+    #                 self.win_zone_moving_rate = 150.0
+    #                 self.win_zone_size = 25
+    #             elif self.level == 7:
+    #                 return self.score
                 
-                return None
+    #             return None
 
-                self.win_zone_x = self.generate_win_x()
-                renpy.restart_interaction()
+    #             self.win_zone_x = self.generate_win_x()
+    #             renpy.restart_interaction()
 
-            def render(self, width, height, st, at):
-                render = renpy.Render(width, height)
+    #         def render(self, width, height, st, at):
+    #             render = renpy.Render(width, height)
                 
-                # Инициализация времени
-                if self.last_st == 0:
-                    self.last_st = st
+    #             # Инициализация времени
+    #             if self.last_st == 0:
+    #                 self.last_st = st
 
-                dt = st - self.last_st
-                self.last_st = st
+    #             dt = st - self.last_st
+    #             self.last_st = st
 
-                bg_render = renpy.render(self.sprite, width, height, st, at)
-                render.blit(bg_render, (0, 0))
+    #             bg_render = renpy.render(self.sprite, width, height, st, at)
+    #             render.blit(bg_render, (0, 0))
 
-                self.cursor_x += self.cursor_speed * dt
-                if self.cursor_x > 1200: 
-                    self.cursor_x = 500
+    #             self.cursor_x += self.cursor_speed * dt
+    #             if self.cursor_x > 1200: 
+    #                 self.cursor_x = 500
 
-                if self.win_zone_moving:
-                    self.win_zone_x += self.win_zone_moving_rate * self.win_zone_direction * dt
-                    if self.win_zone_x > 1100 or self.win_zone_x < 500:
-                        self.win_zone_direction *= -1
-                        # Гарантируем, что зона не выйдет за границы
-                        self.win_zone_x = max(500, min(1100, self.win_zone_x))
+    #             if self.win_zone_moving:
+    #                 self.win_zone_x += self.win_zone_moving_rate * self.win_zone_direction * dt
+    #                 if self.win_zone_x > 1100 or self.win_zone_x < 500:
+    #                     self.win_zone_direction *= -1
+    #                     # Гарантируем, что зона не выйдет за границы
+    #                     self.win_zone_x = max(500, min(1100, self.win_zone_x))
 
-                if self.current_anim is not None:
-                    anim_duration = 0.6  # 300 мс на всю анимацию
-                    time_since_anim = st - self.anim_start_st
+    #             if self.current_anim is not None:
+    #                 anim_duration = 0.6  # 300 мс на всю анимацию
+    #                 time_since_anim = st - self.anim_start_st
                     
-                    if time_since_anim < anim_duration:
-                        frame_idx = int((time_since_anim / anim_duration) * len(self.current_anim))
-                        frame_idx = min(frame_idx, len(self.current_anim) - 1)
+    #                 if time_since_anim < anim_duration:
+    #                     frame_idx = int((time_since_anim / anim_duration) * len(self.current_anim))
+    #                     frame_idx = min(frame_idx, len(self.current_anim) - 1)
                         
-                        anim_disp = self.current_anim[frame_idx]
-                        fr_render = renpy.render(anim_disp, width, height, st, at)
-                        render.blit(fr_render, (0, 0))
+    #                     anim_disp = self.current_anim[frame_idx]
+    #                     fr_render = renpy.render(anim_disp, width, height, st, at)
+    #                     render.blit(fr_render, (0, 0))
 
-                        renpy.redraw(self, 0.01)
-                    else:
+    #                     renpy.redraw(self, 0.01)
+    #                 else:
 
-                        self.current_anim = None
+    #                     self.current_anim = None
 
-                canvas = render.canvas()
+    #             canvas = render.canvas()
                 
-                canvas.rect("#909090", (500, 1000, 700, 30))
+    #             canvas.rect("#909090", (500, 1000, 700, 30))
                 
-                win_color = "#84fc00"
-                if self.current_anim == self.hit_frames and time_since_anim < 0.3:
+    #             win_color = "#84fc00"
+    #             if self.current_anim == self.hit_frames and time_since_anim < 0.3:
 
-                    if int(st * 10) % 2 == 0:
-                        win_color = "#ffffff"
+    #                 if int(st * 10) % 2 == 0:
+    #                     win_color = "#ffffff"
                 
-                canvas.rect(win_color, (int(self.win_zone_x), 1000, self.win_zone_size, 30))
+    #             canvas.rect(win_color, (int(self.win_zone_x), 1000, self.win_zone_size, 30))
                 
-                cursor_color = "#ffffff"
-                if self.current_anim == self.miss_frames and time_since_anim < 0.3:
-                    cursor_color = "#ff0000"  # Красный при промахе
-                elif self.current_anim == self.hit_frames and time_since_anim < 0.3:
-                    cursor_color = "#00ff00"  # Зеленый при попадании
+    #             cursor_color = "#ffffff"
+    #             if self.current_anim == self.miss_frames and time_since_anim < 0.3:
+    #                 cursor_color = "#ff0000"  # Красный при промахе
+    #             elif self.current_anim == self.hit_frames and time_since_anim < 0.3:
+    #                 cursor_color = "#00ff00"  # Зеленый при попадании
                 
-                canvas.rect(cursor_color, (int(self.cursor_x), 1000, 3, 30))
+    #             canvas.rect(cursor_color, (int(self.cursor_x), 1000, 3, 30))
                 
-                # Рамка вокруг зоны
-                canvas.rect("#000000", (int(self.win_zone_x), 1000, self.win_zone_size, 30), width=2)
+    #             # Рамка вокруг зоны
+    #             canvas.rect("#000000", (int(self.win_zone_x), 1000, self.win_zone_size, 30), width=2)
 
 
-                if self.current_anim is None:
-                    renpy.redraw(self, 1.0 / 90.0)  # 90 FPS для плавного движения
-                else:
-                    renpy.redraw(self, 0.01)  # Быстрая перерисовка для анимации
+    #             if self.current_anim is None:
+    #                 renpy.redraw(self, 1.0 / 90.0)  # 90 FPS для плавного движения
+    #             else:
+    #                 renpy.redraw(self, 0.01)  # Быстрая перерисовка для анимации
 
 
-                return render
+    #             return render
 
-            def event(self, ev, x, y, st):
-                if ev.type == pygame.KEYDOWN:
-                    if ev.key == pygame.K_SPACE:
+    #         def event(self, ev, x, y, st):
+    #             if ev.type == pygame.KEYDOWN:
+    #                 if ev.key == pygame.K_SPACE:
 
-                        is_hit = self.win_zone_x <= self.cursor_x <= (self.win_zone_x + self.win_zone_size)
+    #                     is_hit = self.win_zone_x <= self.cursor_x <= (self.win_zone_x + self.win_zone_size)
                         
-                        if is_hit:
-                            self.score += 10 * self.level
-                            self.current_anim = self.hit_frames
-                        else:
-                            self.current_anim = self.miss_frames
+    #                     if is_hit:
+    #                         self.score += 10 * self.level
+    #                         self.current_anim = self.hit_frames
+    #                     else:
+    #                         self.current_anim = self.miss_frames
                         
-                        self.anim_start_st = st
-                        self.plays_counter += 1
-                        
-
-                        if self.plays_counter >= self.LEVEL_PLAYS:
-                            self.plays_counter = 0
-                            score = self.change_level()
-
-                            if score:
-                                store.minigame_score = self.score
-                                return score
-                        else:
-                            self.win_zone_x = self.generate_win_x()
+    #                     self.anim_start_st = st
+    #                     self.plays_counter += 1
                         
 
-                        renpy.redraw(self, 0)
+    #                     if self.plays_counter >= self.LEVEL_PLAYS:
+    #                         self.plays_counter = 0
+    #                         score = self.change_level()
+
+    #                         if score:
+    #                             store.minigame_score = self.score
+    #                             return score
+    #                     else:
+    #                         self.win_zone_x = self.generate_win_x()
+                        
+
+    #                     renpy.redraw(self, 0)
                     
-                return None
+    #             return None
 
-            def visit(self):
-                return [self.sprite] + self.hit_frames + self.miss_frames
+    #         def visit(self):
+    #             return [self.sprite] + self.hit_frames + self.miss_frames
 
-    screen chopping_minigame():
-        add ChoppingGameCDD()
+    # screen chopping_minigame():
+    #     add ChoppingGameCDD()
         
 
 
 
-    call screen chopping_minigame
+    # call screen chopping_minigame
 
 
-    scene wood chopping
+    # scene wood chopping
 
     show ded at center:
         xsize 1024
@@ -796,7 +796,7 @@ label day2:
     ded "Вот видишь дома и стены помогают"
     ded "Пошли завтракать"
 
-    stop sound "morning.ogg"
+    stop sound
 
     "Дед махнул рукой в направлении кухни, куда и отправился"
     hide ded
@@ -1143,7 +1143,7 @@ label day2_after_pdd:
     # День 3. Бабка 
 
     gg "*Прокашливается* Утро добрым не бывает"
-    show gg at right:
+    show gg stay at right:
         xsize 1024
         ysize 720
     gg "Ты зачем так пугаешь? А если бы я.."
@@ -1234,7 +1234,7 @@ label day2_after_pdd:
     # Петух выглядывает из домика (торчит бошка) 
     # Петух вышел из домика и смотрит одним глазом
     # Теперь другим
-    hide gg
+    hide gg stay
     "Петух будто подмигнул герою, отчего тот немного опешил"
     " Петух прошёл в комнату, и герой решил, что стоит пойти за ним" 
 
