@@ -9,6 +9,8 @@ define babka = Character("Бабушка", color="#c27100")
 
 define alkash_subject = Character("Субъект", color = "#0526ab")
 define bab = Character("Бабка", color = "#770081")
+define raper = Character("Репер", color = "#f5c800")
+
 
 image bus_window_factory = "bus_window_factory.png"
 image bus_window_village = "bus_window_village.png"
@@ -18,12 +20,12 @@ image black_bg = "black_bg.png"
 image forest_trail = "forest_trail.png"
 image dub = "dub.png"
 image razvilka = "razvilka.png"
-image PdidiHouse = "PididiHouse.png"
+image PdidiHouse = "PdidiHouse.png"
 image PididiHouseInside = "PididiHouseInside.png"
 image way_to_Pdidi = "way_to_Pdidi.png"
 image babka_house = "babka_house.png"
-image babka_hallway = "babka_hallway.png"
-image babka_s_chikens = "babka_s_chikens.png"
+image babka_hallway = "babka_hallway.jpg"
+image babka_s_chikens = "babka_garden.jpg"
 image lake = "lake.png"
 image lake_fire = "lake_fire.png"
 image school = "school.png"
@@ -33,6 +35,7 @@ image playground = "playground.png"
 image house_livingroom = "house_living_room.png"
 image house_livingroom_night = "house_living_room_night.png"
 
+image egg_ded = "egg_ded.png"
 
 image wood chopping = "minigames/image.png"
 
@@ -47,8 +50,9 @@ image babka_graden = "babka_garden.jpg"
 image babka_house = "babka_house.jpg"
 image babka_inside = "babka_inside.jpg"
 
+image misha = "misha.png"
 image gg stay = "gg.png"
-
+image pdd = "pdd.png"
 
     # Мини игра со стрельбой (микро хоррор, можно сделать типа сон)
     # window hide
@@ -61,6 +65,9 @@ image gg stay = "gg.png"
 
 # Игра начинается здесь:
 label start:
+
+    $ ded_score = 0
+    $ social_score = 0
 
     stop music
     play sound "bus_long.ogg"
@@ -242,7 +249,7 @@ label playground:
     "Источаемый им запах пота и перегара дополнил местную духоту. {p} Аромат получился что надо"
 
     alkash_subject "Воот неожидано дорога поехала"
-    alkash_subject "Вот х***й его знает из-за чего это всё стало"
+    alkash_subject "Вот буй его знает из-за чего это всё стало"
     alkash_subject "Как будто инопришеленец..."
     alkash_subject "... инпрешеленец на своей ... неа"
     alkash_subject "как его"
@@ -339,7 +346,7 @@ label playground:
 
     gg "Так, и где там все-таки дед?"
     scene behind_house
-    "*заходит за дом где огород*"
+    "Матвей зашёл за дом"
 
     hide gg stay
     "За домом открылся вид на большое поле принадлежавшее хозяину дома. Половина была не засажено, а просто напросто заросшее"
@@ -721,7 +728,7 @@ label playground:
         xsize 1024
         ysize 720
 
-    
+    $ ded_score = minigame_score / 10
 
     ded "Так рубить дрова нормально и не научился..."
     ded "Ладно, пошли хоть чаю попьём"
@@ -731,14 +738,57 @@ label playground:
     scene house_kitchen
 
     show gg stay at right:
+        xsize 1024
+        ysize 720
+
+    show ded at left:
+        xsize 1024
+        ysize 720
+
+    "Дед заварил чай себе и Матвею"
+    ded "Хорошо, что чай на свете есть"
+    ded "Эх а ведь помню был таким маленьким"
+
+    hide ded
+    hide gg stay    
+
+
+    show gg stay at right:
         xsize 800
         ysize 600
+
 
     show ded at left:
         xsize 1920
         ysize 1080
 
-    "*пьют чай и что-то обсуждают*"
+    ded "Вот таким"
+    "Дед рукой показал маленьковость Матвея в детстве"
+    gg "Ещё чё вспомнишь?"
+
+    hide ded
+    hide gg stay  
+
+    show gg stay at right:
+        xsize 1024
+        ysize 720
+
+    show ded at left:
+        xsize 1024
+        ysize 720
+
+    ded "Всмомню как вот также чай сидели пили с тобой и с ..."
+    ded "бабушкой твоей"
+
+    "Он помрачнел"
+    "Матвей ничего не ответил"
+    "Они допивали чай молча"
+
+
+    ""
+
+
+
 
     scene black
 
@@ -853,19 +903,25 @@ label day2:
     gg "А где он живёт то? {p} Этот Пётр Дмитрич"
     ded "Крайний дом у леса с левой стороны улицы {p} С красной крышей"
 
-    hide ded
 
     "Матвей недовольно посмотрел на деда, потом себе в тарелку"
     gg "Хорошо"
 
-    hide gg stay
+    hide ded
 
     "Завтрак был съеден, задание от деда получено. Надо было идти и искать дом с красной крышей, где живёт Пётр Дмитрич"
     
+    hide gg stay
+
     scene house_outside
     play sound "деревня.ogg"
 
     scene way_to_Pdidi
+
+    show gg stay at right:
+        xsize 1024
+        ysize 720
+
     "Матвей шёл по улице, на которой когда-то много играл, когда был ребёнком"
 
     show gg stay at right:
@@ -882,7 +938,14 @@ label day2:
     
     ""
     ""
+
+    hide gg stay
+
     "Наконец-то Матвей достиг конца улицы, где она упиралась в лес {p} Виднелся обещанный дом с красной крышей {p} Надо сказать довольно целый на фоне остальных"
+
+    show gg stay at left:
+        xsize 800
+        ysize 600
 
     scene PdidiHouse
     "Матвей подошёл к забору и потянул за ручку калитки, она не поддалась"
@@ -892,10 +955,9 @@ label day2:
 
     "Спустя минуту у калитки оказался Пётр Дмитрич {p} Матвей удивился {p} Очень {p} С ним было что-то не так"
 
-    show pdd at left
-    show gg stay at right:
-        xsize 1024
-        ysize 720
+    show pdd at right:
+        xsize 900
+        ysize 650
 
     pdd "Чё надо"
     gg "Это ты чтоль Пётр Дмитрич?"
@@ -910,17 +972,23 @@ label day2:
     gg "Да я не вижу чтобы ты куда-то торопился"
     pdd "Ладно, пошли в дом, за*бал"
 
-    # Прошли по двору Пидиди
-
-    # Тут описание двора Пидиди
-    hide pdd at left
     hide gg stay
+    hide pdd
+
+
+    scene PididiHouseInside
     "Пётр Дмитрич уселся на табуретку и пригласил Матвея присесть тоже"
-    show gg stay at right:
-        xsize 1024
-        ysize 720
-    show pdd
+
+    show pdd at right:
+        xsize 900
+        ysize 650
+
     pdd "Сигаретку не хочешь?"
+
+    show gg at left:
+        xsize 800
+        ysize 600
+
     gg "Знаю я вас, тонированных. Вы только свою <содержимое удалено по запросу РКН от 22.03.2026> курите"
     gg "Мне такого не надо"
 
@@ -991,13 +1059,13 @@ label day2:
     hide gg stay
     
     "Пётр Дмитрич встал и вышел из комнаты. Матвей услышал как его новый знакомый искал что-то в чулане"
+    hide pdd
+
     "Вернувшись, Петр Дмитрич принёс с собой две бутылки"
 
-    show gg stay at right:
-        xsize 1024
-        ysize 720
-    
-    show pdd at left
+    show pdd at right:
+        xsize 900
+        ysize 650
 
     gg "Мне начинает нравится эта игра"
     pdd "Закрой глаза"
@@ -1087,10 +1155,15 @@ label day2:
 
 
 label lose_naperski:
-    hide pdd
-    hide gg stay
+
+    $ social_score -= 50
+    $ ded_score -= 10
+
     "У Матвея помутнело в глазах и он начал терять сознание"
     scene black_bg
+    hide pdd
+    hide gg stay
+
     ""
     ""
     "Матвей скончался от отравления"
@@ -1098,7 +1171,13 @@ label lose_naperski:
     "Ладно, я пошутил :)"
     ""
     "Матвей очнулся. Рядом сидел его новый собутыльник"
-    show pdd at left
+
+    scene PididiHouseInside
+
+    show pdd at right:
+        xsize 900
+        ysize 650
+
     pdd "Не ссы, тормозуху я перегонял. Скоро вернётся к тебе зрение"
     pdd "Жить будешь"
     pdd "Ты конечно проиграл {p} Но продолжал играть"
@@ -1108,7 +1187,9 @@ label lose_naperski:
     jump day2_after_pdd
 
 label win_naperski:
-    hide gg stay
+    $ social_score += 50
+    $ ded_score += 25
+
     pdd "Молодец, выдержал все 5 раундов"
     "Матвей чувствовал облегчение (ну и опьянение он тоже конечно чувствовал)"
     pdd "Не многие выйгрывают в напёрстки"
@@ -1119,20 +1200,58 @@ label win_naperski:
 
 
 label day2_after_pdd:
+
+   
+
     "Пётр Дмитрич ушел и через минуту вернулся. Он держал в руках обещанный аппарат"
     pdd "Держи, заслужил"
 
     "Самогонный аппарат x1 добавлен в ивентарь"
     pdd "Ладно, иди к деду. Обрадуй старика"
 
-    hide gg stay
-    hide pdd
+    scene way_to_Pdidi
 
     "Матвей выдвинулся в направлении дома Захара Ивановича, неся бесценную добычу"
     "Опьянение давало о себе знать, деревенский пейзаж плыл в глазах Матвея"
     "Он шёл покачиваясь и выглядел совсем как типичный обитатель этих мест"
 
-    "*тут появится диалог с петухом*"
+    "Кто-то двигался ему навстречу"
+    "Что"
+    "Да это же ОН"
+
+    show misha
+
+    raper "Йоу..."
+    gg "какого чёрта"
+    
+    raper "Ещкере"
+
+    $ from datetime import datetime
+    $ begin_track = datetime.now()
+
+    play sound "rap.ogg"
+
+    raper "🔊🔊🔊🔊🔊🔊"
+    raper "🔊🔊🔊🔊🔊🔊"
+    raper "🔊🔊🔊🔊🔊🔊"
+
+
+
+    menu:
+        "Пнуть":
+            $ listened = (datetime.now() - begin_track).seconds
+
+            if listened > 10:
+                $ social_score += 25
+            stop sound
+            "От удара от него полетели перья"
+
+    hide misha
+    "Птица поспешно удалилась"
+
+    gg "Ну хоть тихо стало"
+    gg "Не надо такое больше пить, а то совсем кукухой поеду"
+
 
     scene house_kitchen
     "Ценой огромных усилий Матвей добрался до дома деда, занёс свою добычу на кухню"
@@ -1153,11 +1272,17 @@ label day2_after_pdd:
 
     scene house_livingroom
     "Это был дед"
-    show ded at left
+
+    show ded at left:
+        xsize 800
+        ysize 600
+
     ded "Ну и запах от тебя, внучок"
-    show gg stay at right:
-        xsize 1024
-        ysize 720
+
+    show gg at right:
+        xsize 800
+        ysize 600
+
     gg "эъ"
 
     "Матвей еле встал с кровати"
@@ -1169,9 +1294,9 @@ label day2_after_pdd:
     ded "Выйграл хоть?"
     menu:
         "Да":
-            $ pass
+            $ ded_score += 10
         "Нет":
-            $ pass
+            $ ded_score -= 10
 
     ded "Ладно, молодец, что аппарат вернул"
     ded "Можешь пока полежать, но к ужину всё равно дрова нарубить должен будешь"
@@ -1186,23 +1311,59 @@ label day2_after_pdd:
     "Где-то в прошлой жизни"
     
     gg "Тут то они меня точно не найдут"
-    #"- подумал Матвей и был неправ"
-    # вот тут можно добавить о том, что они едут
+    gg "Ладно, надо дров нарубить и опять спать лечь"
+
+    scene wood chopping
+
+    screen chopping_minigame():
+        add ChoppingGameCDD()
+        
 
 
 
+    call screen chopping_minigame
+    scene wood chopping
+    gg "Ну ладно, пойдёт"
+
+    scene house_livingroom
+    menu:
+        "Спать?"
+        "Спать":
+            $ pass
+        "Спать":
+            $ pass
+        "Спать":
+            $ ded_score += 5
+        "Спать":
+            $ ded_score -= 5
+
+
+    scene black_bg
+    ""
+    ""
+    ""
+
+
+    
     # День 3. Бабка 
+    scene house_livingroom
 
-    gg "*Прокашливается* Утро добрым не бывает"
-    show gg stay at right:
-        xsize 1024
-        ysize 720
-    gg "Ты зачем так пугаешь? А если бы я.."
-    show ded at left:
-        xsize 1024
-        ysize 720
+
+    gg "*Прокашливается* Утро добрым не бывает" 
+    gg "Ты зачем так пугаешь? А если бы я.." 
+
+    show ded at right:
+        xsize 800
+        ysize 600
+
     ded "Ладно, ладно, не ёжься. Завтракать-то будешь?" 
     gg "Было бы неплохо"
+
+    
+    show gg at left:
+        xsize 800
+        ysize 600
+
     ded "Это хорошо. Тогда иди приготовь и мне заодно" 
     gg "М-да.. Стоило ожидать" 
     ded "Хватит уже валяться, иди-иди. Будешь отрабатывать своё" 
@@ -1220,16 +1381,24 @@ label day2_after_pdd:
     gg "Да иду я, иду"
     hide ded
 
-    scene babka_house
+    scene egg_ded
     gg "М-да, ну и грязюка тут"
 
-    # *Мини-игра с подсчётом и кур и яиц*
+    "Так надо их пересчитать"
+    menu:
+        "Забрать яйца":
+            $ pass
 
     scene house_kitchen
 
     show ded at left:
         xsize 1024
         ysize 720
+        
+    show gg at right:
+        xsize 1024
+        ysize 720
+
     gg "Держи вот свои яйца"
     ded "Не мои, а наши"
     $ eggs_num = renpy.input("Сколько там пташек?", length=32)
@@ -1246,16 +1415,22 @@ label day2_after_pdd:
 
     if is_eggs_valid:
 
-        if eggs_num < 10:
+        if eggs_num < 8:
+            $ ded_score -= 25
             ded "Нда, такой себе ты сыщик"
             gg "Так там и не было больше"
             ded "Да не оправдывайся ты"
+        elif eggs_num == 8:
+            $ ded_score += 25
+            ded " О, глазастый какой!"
         else:
-            ded " О, глазастый какой! Или свистнул у соседей?"
+            $ ded_score -= 15
+            ded "Ты считать не умеешь? Или свистнул у соседей?"
             gg "Я к твоим соседям теперь ходить боюсь"
             ded "Да ладно, не ной, молодой"
 
     else:
+        $ ded_score -= 50
         "Разбей клавитуру себе об голову, балбес"
 
 
@@ -1265,12 +1440,19 @@ label day2_after_pdd:
     gg "Сам что ли?)" 
     ded "Шутник значит. Ну хорошо. А ты давай иди, тебя соседушка ждёт. Хех"
 
-    #*сменить деда на деда с конченым  *
-    gg "Не нравится мне твоя ухмылка"
+
+    gg "Не нравится мне твоя ухмылка" 
+
     hide ded
+    hide gg
 
     scene babka_house
     play sound "rooster.ogg"
+
+    show gg at left:
+        xsize 800
+        ysize 600
+
     gg "Как-то много петухи орут. Неужели с таким количеством петухов куры не несутся"
     gg "Как она вообще живёт в таком шуме" 
 
@@ -1278,23 +1460,32 @@ label day2_after_pdd:
 
     gg "апроегмн, Да тут же только петухи! Мужики, вы чего?!" 
     gg "Чувствую будет весело"
+    hide gg stay
+
 
     scene babka_hallway
     play sound "rooster2.ogg"
 
     # Петух выглядывает из домика (торчит бошка) 
     # Петух вышел из домика и смотрит одним глазом
-    # Теперь другим
-    hide gg stay
+    # Теперь другим 
+    "Матвей прошёл внутрь"
     "Петух будто подмигнул герою, отчего тот немного опешил"
-    " Петух прошёл в комнату, и герой решил, что стоит пойти за ним" 
+    "Петух прошёл в комнату, и герой решил, что стоит пойти за ним" 
 
     scene babka_inside 
 
     "В комнате царила дикая вонь и небольшая бабка" 
-    "Недалеко от бабуси стоял телевизор, на котором крутил рен_тв"
+    "Недалеко от бабуси стоял телевизор, на котором крутил рен_тв" 
+
+    show bab at right
 
     bab "Гремучие инопланетяне с Нибиру. Планету свою передвигают, а у меня петухи из-за них не несутся"
+
+    show gg at left:
+        xsize 800
+        ysize 600
+
     gg "М-да, какие интересные экземпляры в этой деревне. Может их специально собрали тут" 
     bab "А тебя я знаю, и откуда ты тоже знаю"
     gg "А это не радует"
@@ -1302,6 +1493,9 @@ label day2_after_pdd:
     gg "Какому мужу?" 
     bab "Как где? Вон сзади тебя стоит красавец мой, Мишка🥰"
     "Тут, как по команде из зада героя вальяжно выходит петух Михаил, всем видом показывая, что в этом царстве он король!"
+
+    show misha at center
+
     gg "О Боже мой, куда я попал"
     bab "Бога нет, есть только лягущька" 
     gg "А в Прокопенко-то ты веришь?)"
@@ -1312,9 +1506,15 @@ label day2_after_pdd:
     bab "АААх, срочно на улицу, 30 секунд"
     gg "30 секунд до чего?"
     bab "До кладки яиц, внучек, до кладки яиц!"
+
+    hide bab
+    hide gg stay
+
     "Казалось бы, щупленькая бабуся с такой силой дернула героя, что тот буквально вылетел на улицу, вспоминая в полете все свои грехи и думая где же он таак провинился"
     scene babka_s_chikens
+    show bab at right
     bab "Держи корзину и лови яйца"
+    hide bab
     "Петухи на крыше как-то странно закудахтали"
     ### Мини игра
     # if n > ZOV:
@@ -1330,7 +1530,14 @@ label day2_after_pdd:
     # ⠀⠀else:
     # ⠀⠀⠀⠀bab "Да ты ж позорник. Ни считать кур не умеешь, ни яйца ловить. И как такой жив ещё"
 
+    show gg at left:
+        xsize 800
+        ysize 600
+
     gg "Ты откуда знаешь про кур?"
+
+    show bab at right
+
     bab "Да я ж говорила, я всё знаю. Мне с космоса от солнца сигнал идет!"
     gg "Так невидно же солнца"
     # *ГГ тянет руку к солнцу*
@@ -1352,8 +1559,7 @@ label day2_after_pdd:
 
             menu:
                 "Может тебе помочь ещё, стар.. старушка?":
-                    # */*/*/*/*/*/*/* ВЕТКА 1.1
-                    # + рейтинг у жителей
+                    $ social_score += 25
                     gg "Хотя может карму почистить? А то я тут долго не протяну"
                     bab "Да не надо мне ничего. Ты вот лучше скажи, ты ж внук Захар Иваныча"
 
@@ -1372,8 +1578,6 @@ label day2_after_pdd:
                             gg "Хорошо, думай так"
             
 
-
-                    # */*/*/*/*/*/*/* ВЕТКА 1.1
                     bab "А он же иноплаТеНянин, ты знал? "
                     gg "Ктоо?)) "
                     bab "Ну иноплаТеНянин. Ты разве не слышал? У него же по ночам странные непонятные слова слышны из дома"
@@ -1400,9 +1604,13 @@ label day2_after_pdd:
 
 
         "Тысяча чертей прямо за забором, детка":
+            $ social_score -= 50
             play sound "pig.ogg"
             bab "ААААААААААА"
             gg "Да чтоб тебя"
+
+            hide bab
+
             # *Картинка улицы и вдали два силуэта (можно просто улицу, силуэты из персонажей прилепим) *
             gg "Ох уж этот ретроградный меркурий. Надо бы где-то отсидеться"
 
@@ -1416,10 +1624,20 @@ label day2_after_pdd:
             # *Никитины картинки*
             gg "М-дааа, ну и кошмар.. Интересно, почему же лесничий отсюда свалил, домик-то хороший был.. когда-то"
 
+            hide gg stay
+
             "Садиться на кресло герой не захотел, Фасон не тот. Да и как будто бы кто-то в нем шевелился. То ли насекомые, то ли что-то ещё"
             "Проверять он не захотел и расселся на полу"
+
+            show gg at left:
+                xsize 800
+                ysize 600
+
             gg "Деревенька-то тут маленькая. На что я надеялся. Найдут же они меня скоро"
             gg "А если они к деду зайдут? Он же всё поймёт"
+
+            hide gg stay
+
             # %ПРЯМ громкий шорох%
             "Но тут от мыслей его отрывает какой-то громкий шорох"
             # *Петух на половину экрана*
@@ -1430,7 +1648,15 @@ label day2_after_pdd:
             # %Смех дианы опущенный прям до минимума%
         
 
-    # *Дом деда с первого дня*
+    scene house_outside
+    hide bab
+    show gg at left:
+        xsize 800
+        ysize 600
+    show ded at right:
+        xsize 800
+        ysize 600
+
     gg "Так, яйца при мне, голову вроде тоже не забыл"
     # *Дом внутри*
     ded "Явился-таки. Я уж думал тебя искать"
@@ -1458,7 +1684,10 @@ label day2_after_pdd:
 
 
 
-
+    ""
+    "[social_score]"
+    "[ded_score]"
+    ""
 
 
 
