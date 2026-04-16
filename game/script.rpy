@@ -2441,6 +2441,7 @@ label good_good:
     return
 
 label shiza_ending_credits:
+    play sound "shiza.ogg"
     scene bg tyler
 
     show text "{color=#FFFFFF}{size=50}Дед оказался шизой{/size}{/color}"
