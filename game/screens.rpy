@@ -9,6 +9,12 @@ init offset = -1
 ## Стили
 ################################################################################
 
+screen game_trigger_button():
+    # Показывать кнопку только на сенсорных устройствах (телефонах/планшетах)
+    if renpy.variant("touch"):
+        # Кнопка в правом нижнем углу
+        textbutton "> Игра" action Function(your_game_function) xalign 1.0 yalign 1.0
+
 style default:
     properties gui.text_properties()
     language gui.language

@@ -2837,12 +2837,12 @@ label neutral2:
     gg "Куда же дед делся? Неужели он там меня покрывает?"
     "Размышлять долго не пришлось"
     play sound "uzi.ogg"
-    stop sound fadeout 3.0
+    
     ""
 
     gg "??"
     gg "Дед?!"
-
+    stop sound fadeout 3.0
     scene house_outside
     show gg at left:
         xsize 800
