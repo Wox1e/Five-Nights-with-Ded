@@ -1618,20 +1618,46 @@ label day2_after_pdd:
     stop back fadeout 3.0
     hide bab
     "Петухи на крыше как-то странно закудахтали"
-    ### Мини игра
-    # if n > ZOV:
-    # ⠀⠀+рейтинг у жителей
-    # ⠀⠀if Z>10:
-    # ⠀⠀⠀⠀bab "Молодеец. Да ты сегодня в ударе. И Захар Иванычу помог, и мне"
-    # ⠀⠀else:
-    # ⠀⠀⠀⠀bab "М-да, ну считать кур ты не умеешь, хоть реакция есть."
-    # else:
-    # ⠀⠀-рейтинг у жителей
-    # ⠀⠀if Z>10:
-    # ⠀⠀⠀⠀bab "Ну ты даешь, они ж раз в месяц несутся. Ну городские! Только считать кур и умеете"
-    # ⠀⠀else:
-    # ⠀⠀⠀⠀bab "Да ты ж позорник. Ни считать кур не умеешь, ни яйца ловить. И как такой жив ещё"
-
+    label play_egg_minigame:
+    "Лови свои яйца!"
+    
+    # 1. Инициализируем флаги
+    $ store.egg_catcher_done = False
+    $ store.egg_catcher_score = 0
+    
+    # 2. Создаём и показываем игру
+    $ egg_game = EggCatcherCDD(
+    total_eggs=10,          # КОЛ_ВО ЯИЦ С НЕБА
+    spawn_interval=1.0, 
+    egg_start_speed=180.0,  #  Начальная скорость
+    egg_acceleration=45.0   # Ускорение каждого следующего яйца
+)
+    show expression egg_game at truecenter
+    
+    # 3. Ждём, пока CDD не установит store.egg_catcher_done = True
+    while not store.egg_catcher_done:
+        $ renpy.pause(0.016)  # ожидание
+    
+    # 4. Скрываем игру
+    hide expression egg_game
+    
+    # 5. СЮЖЕТ ПРОДОЛЖАЕТСЯ ЗДЕСЬ
+    $ final_score = store.egg_catcher_score
+    
+    if final_score > 8:
+        $ social_score+=15
+        if eggs_num == 8:
+            bab "Молодеец. Да ты сегодня в ударе. И Захар Иванычу помог, и мне"
+        else:
+            bab "М-да, ну считать кур ты не умеешь, хоть реакция есть."
+    else:
+        $ social_score-=15
+        if eggs_num != 8:
+            bab "Ну ты даешь, они ж раз в месяц несутся. Ну городские! Только считать кур и умеете"
+        else:
+            bab "Да ты ж позорник. Ни считать кур не умеешь, ни яйца ловить. И как такой жив ещё"
+    bab "Пошли домой"
+    
     show gg at left:
         xsize 800
         ysize 600
