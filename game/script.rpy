@@ -2,6 +2,7 @@
 
 # Определение персонажей игры.
 define ded = Character('Дед Захар', color="#00b9d2")
+define ded_incredible = Character('Храз', color="#7e00d2")
 define gg = Character("Матвей", color="#0526ab")
 define fm = Character("Рыбак", color="#0526ab")
 define pdd = Character("П.Дмитрич", color="#c27100")
@@ -75,6 +76,7 @@ image babka_inside = "babka_inside.jpg"
 
 image village_future = "village_furure.jpg"
 
+image ded_incredible = "ded_incredible.png"
 image misha = "misha.png"
 image misha2 = "misha2.png"
 image gg stay = "gg.png"
@@ -1638,13 +1640,13 @@ label day2_after_pdd:
     while not store.egg_catcher_done:
         $ renpy.pause(0.016)  # ожидание
     
+    $ final_score = store.egg_catcher_score
     # 4. Скрываем игру
     hide expression egg_game
     
-    # 5. СЮЖЕТ ПРОДОЛЖАЕТСЯ ЗДЕСЬ
-    $ final_score = store.egg_catcher_score
     
-    if final_score > 8:
+    
+    if final_score >= 7:
         $ social_score+=15
         if eggs_num == 8:
             bab "Молодеец. Да ты сегодня в ударе. И Захар Иванычу помог, и мне"
@@ -1656,7 +1658,8 @@ label day2_after_pdd:
             bab "Ну ты даешь, они ж раз в месяц несутся. Ну городские! Только считать кур и умеете"
         else:
             bab "Да ты ж позорник. Ни считать кур не умеешь, ни яйца ловить. И как такой жив ещё"
-    bab "Пошли домой"
+    bab "Пошли в дом уж теперь"
+    scene babka_house
     
     show gg at left:
         xsize 800
@@ -2516,6 +2519,8 @@ if social_score < 0 and ded_score < 20:
     jump bad_bad
 elif social_score >= 0 and ded_score >= 20:
     jump good_good
+elif social_score < 0 and ded_score >= 20:
+    jump neutral2
 else:
     jump neutral
 
@@ -2821,6 +2826,39 @@ label shiza_ending_credits:
     pause 8
     return
 
+label neutral2:
+    scene house_livingroom
+    "Матвей спал крепко, но какой-то шум на улице всё-таки заставил его подняться"
+    show gg at left:
+        xsize 800
+        ysize 600
+    "За окном виднелась какая-то толпа{p}Наверное, людей"
+    gg "Вот же черт, ещё их всех тут не хватало"
+    gg "Куда же дед делся? Неужели он там меня покрывает?"
+    "Размышлять долго не пришлось"
+    play sound "uzi.ogg"
+    stop sound fadeout 3.0
+    ""
+
+    gg "??"
+    gg "Дед?!"
+
+    scene house_outside
+    show gg at left:
+        xsize 800
+        ysize 600
+    show ded at right:
+        xsize 800
+        ysize 600
+    gg "Ты че тут делаешь??"
+    gg "Я думал, эти бандиты по тебе стрелять начали"
+
+    ded "Не дрейфь, молой, мы ещё прорвёмся"
+    hide ded
+    show ded_incredible at right:
+        xsize 1600
+        ysize 1200
+    ded_incredible "Мы им всем ещё покажем"
 
 
     # завершение сценария
