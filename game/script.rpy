@@ -1,4 +1,4 @@
-﻿
+
 
 # Определение персонажей игры.
 define ded = Character('Дед Захар', color="#00b9d2")
@@ -16,6 +16,8 @@ define m = Character("Мент", color = "#ff0000")
 define r = Character("Ринат", color = "#ffffff")
 define b = Character("Булат", color = "#005247")
 define misha = Character("Михаил 😎", color = "#005247")
+
+define alkash_subject = Character("Субъект", color = "#0526ab")
 
 image bus_window_factory = "bus_window_factory.png"
 image bus_window_village = "bus_window_village.png"
